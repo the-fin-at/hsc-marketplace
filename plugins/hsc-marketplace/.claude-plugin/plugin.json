@@ -1,7 +1,7 @@
 {
   "name": "hsc-marketplace",
-  "version": "0.1.0",
-  "description": "Grundgerüst für HSC-Skills. Die Skills werden später ergänzt.",
+  "version": "0.2.0",
+  "description": "HSC-Skills für die interaktive Klärung von Aufgaben.",
   "author": {
     "name": "THE FIN",
     "url": "https://github.com/the-fin-at"

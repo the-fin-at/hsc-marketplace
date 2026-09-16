@@ -1,0 +1,7 @@
+interface:
+  display_name: "Interview"
+  short_description: "Aufgaben mit 5–10 interaktiven Fragen klären"
+  default_prompt: "Nutze $interview für eine interaktive Fragerunde zu meiner Aufgabe: [AUFGABE]."
+
+policy:
+  allow_implicit_invocation: true

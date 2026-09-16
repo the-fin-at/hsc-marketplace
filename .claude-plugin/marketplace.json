@@ -11,7 +11,7 @@
     {
       "name": "hsc-marketplace",
       "source": "./plugins/hsc-marketplace",
-      "description": "Grundgerüst für HSC-Skills. Die Skills werden später ergänzt."
+      "description": "HSC-Skills für die interaktive Klärung von Aufgaben."
     }
   ]
 }

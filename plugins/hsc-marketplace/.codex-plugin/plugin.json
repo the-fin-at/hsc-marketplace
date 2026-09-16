@@ -1,7 +1,7 @@
 {
   "name": "hsc-marketplace",
-  "version": "0.1.0",
-  "description": "Grundgerüst für HSC-Skills. Die Skills werden später ergänzt.",
+  "version": "0.2.0",
+  "description": "HSC-Skills für die interaktive Klärung von Aufgaben.",
   "author": {
     "name": "THE FIN",
     "url": "https://github.com/the-fin-at"
@@ -17,10 +17,14 @@
   "interface": {
     "displayName": "HSC Marketplace",
     "shortDescription": "Plugin für HSC-Skills",
-    "longDescription": "Vorbereitetes Plugin für HSC-Skills. Aktuell sind noch keine Skills enthalten.",
+    "longDescription": "Klärt Aufgaben mit 5–10 adaptiven nativen Fragekarten und fasst die Aufgabenstellung und offene Punkte zusammen. Benötigt verfügbare Fragewerkzeuge in der jeweiligen Sitzung.",
     "developerName": "THE FIN",
     "category": "Productivity",
-    "capabilities": [],
-    "defaultPrompt": []
+    "capabilities": [
+      "Interactive"
+    ],
+    "defaultPrompt": [
+      "Mach eine interaktive Fragerunde zu meiner Aufgabe."
+    ]
   }
 }
