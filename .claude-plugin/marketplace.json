@@ -1,0 +1,17 @@
+{
+  "name": "hsc-marketplace",
+  "owner": {
+    "name": "THE FIN",
+    "url": "https://github.com/the-fin-at"
+  },
+  "metadata": {
+    "description": "Marketplace für HSC-Skills."
+  },
+  "plugins": [
+    {
+      "name": "hsc-marketplace",
+      "source": "./plugins/hsc-marketplace",
+      "description": "Grundgerüst für HSC-Skills. Die Skills werden später ergänzt."
+    }
+  ]
+}

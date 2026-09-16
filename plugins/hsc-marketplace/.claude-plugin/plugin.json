@@ -1,0 +1,17 @@
+{
+  "name": "hsc-marketplace",
+  "version": "0.1.0",
+  "description": "Grundgerüst für HSC-Skills. Die Skills werden später ergänzt.",
+  "author": {
+    "name": "THE FIN",
+    "url": "https://github.com/the-fin-at"
+  },
+  "homepage": "https://github.com/the-fin-at/hsc-marketplace",
+  "repository": "https://github.com/the-fin-at/hsc-marketplace",
+  "license": "UNLICENSED",
+  "keywords": [
+    "hsc",
+    "skills"
+  ],
+  "skills": "./skills/"
+}
