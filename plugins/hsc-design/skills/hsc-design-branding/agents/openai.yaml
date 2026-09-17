@@ -1,4 +1,4 @@
 interface:
   display_name: "HSC Design Branding"
-  short_description: "Vorhandene Unterlagen im HSC Corporate Design setzen"
-  default_prompt: "Nutze $hsc-design-branding, um meine vorhandene Unterlage mit dem bereitgestellten HSC Design System neu zu setzen."
+  short_description: "Unterlagen mit mitgelieferten HSC-Vorlagen gestalten"
+  default_prompt: "Nutze $hsc-design-branding, um meine Unterlage mit den mitgelieferten HSC-Vorlagen neu zu setzen."

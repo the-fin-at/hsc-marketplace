@@ -1,12 +1,14 @@
 # HSC Marketplace
 
-Marketplace für HSC-Skills von THE FIN. Enthält `hsc-productivity` in Version `0.4.0` für Codex und Claude Code sowie `hsc-design` in Version `0.1.0` für Codex.
+Marketplace für HSC-Skills von THE FIN. Enthält `hsc-productivity` in Version `0.4.0` für Codex und Claude Code sowie `hsc-design` in Version `0.2.0` für Codex.
 
 ## Design-Plugin für Codex
 
-`hsc-design` enthält [hsc-design-branding](plugins/hsc-design/skills/hsc-design-branding/SKILL.md): Neusatz vorhandener Unterlagen als Deck oder A4-Dokument im Corporate Design von HÖRHAN Strategy Consultants. Der Skill wurde aus der bereitgestellten Claude-Fassung für Codex angepasst. Er verwendet verfügbare Datei-, Dokument- und Rendering-Werkzeuge statt des Claude-Artifact-Tools.
+`hsc-design` enthält [hsc-design-branding](plugins/hsc-design/skills/hsc-design-branding/SKILL.md) für ChatGPT und Codex: Neusatz vorhandener Unterlagen als Deck oder A4-Dokument im Corporate Design von HÖRHAN Strategy Consultants.
 
-**Voraussetzung:** ein lokaler Export des HSC Design Systems mit Brand Book, Schreibregeln, Tokens, Bausteinen, Montserrat-Schriften und Original-Logo. Diese Dateien sind im gelieferten `.skill`-Archiv nicht enthalten und werden nicht mit diesem Plugin ausgeliefert. Ohne die benötigten Dateien kann Codex die Inhaltsinventur erstellen, aber keinen vollständigen HSC-Neusatz ausführen.
+**Design-System enthalten:** alle 19 Originaldateien aus `HSC_DesignSystem.zip` (Stand 17.09.2026), darunter Tokens, CSS-Bausteine, Logo, sechs Montserrat-Schnitte samt Lizenz, HTML-Dokumentation und vier Beispielfolien mit PNG-Vorschauen. Ergänzt sind lesbare Regelreferenzen und fünf HTML-Vorlagen mit Platzhaltern, einschließlich A4. Kein Claude-Artifact-Zugriff und kein zusätzlicher Design-Export nötig.
+
+Der Nutzer stellt seine Ausgangsunterlage bereit. Die verwendete Oberfläche muss Dateierzeugung und für die Sichtprüfung Rendering unterstützen. Native Office-Masterdateien sind nicht enthalten; PPTX/DOCX werden aus den Designvorgaben erzeugt und gesondert geprüft. Die Installation und der vollständige Ablauf auf der ChatGPT-Testinstanz müssen noch dort getestet werden.
 
 Nach Veröffentlichung bzw. Aktualisierung des Marketplace:
 
@@ -14,7 +16,7 @@ Nach Veröffentlichung bzw. Aktualisierung des Marketplace:
 codex plugin add hsc-design@hsc-marketplace
 ```
 
-Beispiel: „Nutze $hsc-design-branding für diese Unterlage. Das HSC Design System liegt in diesem Ordner: …“
+Beispiel: „Nutze $hsc-design-branding für diese Unterlage. Verwende die mitgelieferten Vorlagen und liefere ein A4-Dokument.“
 
 ## Productivity-Plugin
 

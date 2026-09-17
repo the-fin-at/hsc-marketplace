@@ -1,0 +1,141 @@
+/* =====================================================================
+   HÖRHAN Strategy Consultants (HSC) — Bausteine
+   Folien: Bühne 1280 × 720 px. Dokumente: A4, Größen in pt.
+   Alle Farben und Größen kommen aus tokens.css.
+   Klassen-Präfix: hsc-
+   ===================================================================== */
+
+/* ---------- Schrift: Montserrat (SIL OFL 1.1, assets/) [HSC] ---------- */
+@font-face{font-family:"Montserrat";src:url("assets/Montserrat-Regular.ttf") format("truetype");font-weight:400;font-style:normal}
+@font-face{font-family:"Montserrat";src:url("assets/Montserrat-Italic.ttf") format("truetype");font-weight:400;font-style:italic}
+@font-face{font-family:"Montserrat";src:url("assets/Montserrat-Medium.ttf") format("truetype");font-weight:500;font-style:normal}
+@font-face{font-family:"Montserrat";src:url("assets/Montserrat-SemiBold.ttf") format("truetype");font-weight:600;font-style:normal}
+@font-face{font-family:"Montserrat";src:url("assets/Montserrat-SemiBoldItalic.ttf") format("truetype");font-weight:600;font-style:italic}
+@font-face{font-family:"Montserrat";src:url("assets/Montserrat-Bold.ttf") format("truetype");font-weight:700;font-style:normal}
+
+/* ---------- Basis ---------- */
+.hsc-slide, .hsc-slide *, .hsc-doc, .hsc-doc *{box-sizing:border-box}
+
+/* =====================================================================
+   FOLIEN
+   ===================================================================== */
+
+/* ---------- Bühne ---------- */
+.hsc-slide{position:relative;width:var(--hsc-slide-w);height:var(--hsc-slide-h);overflow:hidden;
+  background:var(--hsc-white);color:var(--hsc-text);font-family:var(--hsc-font);
+  font-size:var(--hsc-slide-body);line-height:var(--hsc-slide-lh);
+  --_fg:var(--hsc-text);--_rule:var(--hsc-line);--_accent:var(--hsc-green)}
+.hsc-slide--blue{background:var(--hsc-blue);color:var(--hsc-white);
+  --_fg:var(--hsc-white);--_rule:rgba(255,255,255,.35);--_accent:var(--hsc-blue-light)}
+.hsc-slide h1,.hsc-slide h2,.hsc-slide h3,.hsc-slide p,.hsc-slide ul{margin:0}
+
+/* ---------- Chrome: Kicker, Logo, Fußlinie, Fußzeile, Seitenzahl ---------- */
+.hsc-kicker{position:absolute;left:var(--hsc-slide-margin);top:56px;
+  font-size:var(--hsc-slide-kicker);font-weight:var(--hsc-weight-medium);letter-spacing:.08em;text-transform:uppercase;color:var(--_fg)}
+.hsc-logo{position:absolute;right:var(--hsc-slide-margin);top:48px;width:var(--hsc-slide-logo-w);height:auto}
+.hsc-footrule{position:absolute;left:var(--hsc-slide-margin);right:var(--hsc-slide-margin);top:var(--hsc-slide-footrule-y);height:var(--hsc-line-w);background:var(--_rule)}
+.hsc-footer{position:absolute;left:var(--hsc-slide-margin);top:var(--hsc-slide-footer-y);font-size:var(--hsc-slide-footer);line-height:1.4;color:var(--_fg)}
+.hsc-pagenum{position:absolute;right:var(--hsc-slide-margin);top:var(--hsc-slide-footer-y);font-size:var(--hsc-slide-footer);line-height:1.4;color:var(--_fg)}
+
+/* ---------- Inhaltsfolie: Titelblock ---------- */
+.hsc-title{position:absolute;left:var(--hsc-slide-margin);top:88px;width:880px;
+  font-size:var(--hsc-slide-h1);font-weight:var(--hsc-weight-bold);line-height:var(--hsc-slide-title-lh);letter-spacing:-.01em;color:var(--_fg)}
+.hsc-title--caps{text-transform:uppercase;letter-spacing:.02em}   /* wie Überschrift 1 im Word-Dokument */
+.hsc-title--green{color:var(--hsc-green)}                          /* nur ≥ 48 px, siehe Styleguide „Grün“ */
+.hsc-subtitle{position:absolute;left:var(--hsc-slide-margin);top:150px;width:880px;
+  font-size:var(--hsc-slide-body);line-height:1.3;color:var(--_fg)}
+.hsc-content{position:absolute;left:var(--hsc-slide-margin);right:var(--hsc-slide-margin);
+  top:var(--hsc-slide-content-top);bottom:calc(var(--hsc-slide-h) - var(--hsc-slide-content-bottom))}
+.hsc-content--lower{top:232px}   /* wenn ein Untertitel gesetzt ist */
+
+/* ---------- Titelfolie ---------- */
+.hsc-cover__logo{position:absolute;left:var(--hsc-slide-margin);top:64px;width:320px;height:auto}
+.hsc-cover__bar{position:absolute;left:var(--hsc-slide-margin);top:296px;width:96px;height:var(--hsc-bar-w);background:var(--hsc-green)}
+.hsc-cover__title{position:absolute;left:var(--hsc-slide-margin);top:328px;width:1000px;
+  font-size:var(--hsc-slide-title-slide);font-weight:var(--hsc-weight-bold);line-height:var(--hsc-slide-title-lh);letter-spacing:-.01em;color:var(--hsc-text)}
+.hsc-cover__sub{position:absolute;left:var(--hsc-slide-margin);top:496px;width:1000px;
+  font-size:var(--hsc-slide-h3);line-height:1.3;color:var(--hsc-text)}
+.hsc-cover__meta{position:absolute;left:var(--hsc-slide-margin);top:584px;font-size:var(--hsc-slide-small);line-height:1.4;color:var(--hsc-text)}
+
+/* ---------- Kapiteltrenner (Dunkelblau) ---------- */
+.hsc-div__num{position:absolute;left:var(--hsc-slide-margin);top:180px;
+  font-size:var(--hsc-slide-display);font-weight:var(--hsc-weight-bold);line-height:1;color:var(--hsc-blue-light)}
+.hsc-div__title{position:absolute;left:var(--hsc-slide-margin);top:312px;width:1000px;
+  font-size:var(--hsc-slide-title-slide);font-weight:var(--hsc-weight-bold);line-height:var(--hsc-slide-title-lh);letter-spacing:-.01em;color:var(--hsc-white)}
+.hsc-div__sub{position:absolute;left:var(--hsc-slide-margin);top:488px;width:900px;
+  font-size:var(--hsc-slide-h3);line-height:1.3;color:var(--hsc-white)}
+
+/* ---------- Box ---------- */
+.hsc-box{border:var(--hsc-line-w) solid var(--hsc-line);border-radius:var(--hsc-radius);background:var(--hsc-white);
+  padding:var(--hsc-space-3);color:var(--hsc-text);display:flex;flex-direction:column;gap:var(--hsc-space-1);overflow:hidden}
+.hsc-box__title{font-size:var(--hsc-slide-body);font-weight:var(--hsc-weight-bold);line-height:1.2;hyphens:auto}  /* ≙ Überschrift 4 */
+.hsc-box--lg .hsc-box__title{font-size:var(--hsc-slide-h3)}  /* bei 1–2 Boxen je Reihe */
+.hsc-box__text{font-size:var(--hsc-slide-small);line-height:1.35}
+.hsc-box--surface{background:var(--hsc-surface);border-color:var(--hsc-surface)}
+.hsc-box--tint{background:var(--hsc-blue-tint);border-color:var(--hsc-blue-tint)}
+.hsc-box--blue{background:var(--hsc-blue);border-color:var(--hsc-blue);color:var(--hsc-white)}
+.hsc-box--blue .hsc-box__title{color:var(--hsc-white)}
+.hsc-boxes{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:var(--hsc-slide-gutter)}
+.hsc-boxes--2{grid-template-columns:1fr 1fr;grid-auto-flow:row}
+
+/* ---------- Prozessschritte ---------- */
+.hsc-steps{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:var(--hsc-slide-gutter);position:relative}
+.hsc-step{position:relative;padding:var(--hsc-space-3) 0 0;border-top:4px solid var(--hsc-blue);color:var(--hsc-text)}
+.hsc-step__num{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;
+  background:var(--hsc-blue);color:var(--hsc-white);font-size:var(--hsc-slide-body);font-weight:var(--hsc-weight-bold);line-height:1}
+.hsc-step__title{margin-top:var(--hsc-space-2);font-size:var(--hsc-slide-h3);font-weight:var(--hsc-weight-bold);line-height:1.2}
+.hsc-step__text{margin-top:var(--hsc-space-1);font-size:var(--hsc-slide-small);line-height:1.35}
+/* Konnektor: hellblaue Linie zwischen den Schritten, auf Höhe der Ziffer */
+.hsc-step:not(:last-child)::after{content:"";position:absolute;left:calc(44px + 12px);right:calc(-1 * var(--hsc-slide-gutter) + 12px);
+  top:calc(var(--hsc-space-3) + 21px);height:2px;background:var(--hsc-blue-light)}
+.hsc-step--current{border-top-color:var(--hsc-green)}   /* Ziffer bleibt Dunkelblau: Weiß auf Grün erreicht 2,96:1 */
+
+/* ---------- Aufzählung: Gedankenstrich als Gliederungszeichen [HSC] ---------- */
+.hsc-list{list-style:none;padding:0;margin:0;font-size:var(--hsc-slide-body);line-height:var(--hsc-slide-lh)}
+.hsc-list li{position:relative;padding-left:1.25em;margin:0 0 .45em}
+.hsc-list li::before{content:"–";position:absolute;left:0;top:0}
+.hsc-list li li{font-size:var(--hsc-slide-small);margin-top:.3em}
+.hsc-list ul{list-style:none;padding:0;margin:.3em 0 0}
+.hsc-list--2col{columns:2;column-gap:var(--hsc-space-6)}
+.hsc-list--2col li{break-inside:avoid}
+
+/* ---------- Zitat / Merksatz: grüner Balken links ---------- */
+.hsc-merk{border-left:var(--hsc-bar-w) solid var(--hsc-green);padding:var(--hsc-space-1) 0 var(--hsc-space-1) var(--hsc-space-3);color:var(--hsc-text)}
+.hsc-merk__text{font-size:var(--hsc-slide-h3);font-weight:var(--hsc-weight-medium);line-height:1.3}
+.hsc-merk__source{margin-top:var(--hsc-space-1);font-size:var(--hsc-slide-small);line-height:1.35}
+.hsc-merk--tint{background:var(--hsc-green-tint);padding:var(--hsc-space-3);border-radius:0 var(--hsc-radius) var(--hsc-radius) 0}
+.hsc-slide--blue .hsc-merk{border-left-color:var(--hsc-blue-light);color:var(--hsc-white)}
+
+/* ---------- Zweispaltiges Layout (Text + Baustein) ---------- */
+.hsc-cols{display:grid;grid-template-columns:1fr 1fr;gap:var(--hsc-space-6);height:100%}
+
+/* =====================================================================
+   DOKUMENTE (A4, Werte aus der Word-Vorlage)
+   ===================================================================== */
+.hsc-doc{font-family:var(--hsc-font);font-size:var(--hsc-doc-body);line-height:var(--hsc-doc-lh);color:var(--hsc-text);
+  background:var(--hsc-white);text-align:left}
+.hsc-doc--a4{width:210mm;min-height:297mm;padding:var(--hsc-page-header) var(--hsc-page-margin-side) var(--hsc-page-footer);position:relative}
+.hsc-doc__header{height:calc(var(--hsc-page-margin-top) - var(--hsc-page-header));display:flex;justify-content:center;align-items:flex-start}
+.hsc-doc__header img{width:var(--hsc-logo-header-w);height:auto}
+.hsc-doc h1,.hsc-doc h2,.hsc-doc h3,.hsc-doc h4{font-weight:var(--hsc-weight-regular);margin:0;line-height:1.2;color:var(--hsc-text)}
+.hsc-doc h1{font-size:var(--hsc-doc-h1);text-transform:uppercase;margin-top:var(--hsc-doc-h1-before);color:var(--hsc-green)}
+.hsc-doc h2{font-size:var(--hsc-doc-h2);text-transform:uppercase;margin-top:var(--hsc-doc-h2-before)}
+.hsc-doc h3{font-size:var(--hsc-doc-h3);font-weight:var(--hsc-weight-bold);letter-spacing:.05em;margin-top:var(--hsc-doc-h3-before);line-height:1.5}
+.hsc-doc h4{font-size:var(--hsc-doc-h4);font-weight:var(--hsc-weight-bold);margin-top:var(--hsc-doc-para)}
+.hsc-doc p{margin:var(--hsc-doc-para) 0}
+.hsc-doc ul{list-style:none;margin:var(--hsc-doc-para) 0;padding-left:var(--hsc-doc-list-indent)}
+.hsc-doc li{position:relative;padding-left:1.1em;margin:0}
+.hsc-doc li::before{content:"–";position:absolute;left:0}
+.hsc-doc .hsc-example{color:var(--hsc-green)}   /* Beispiele wie im Styleguide — Kontrast siehe Styleguide „Grün“ */
+.hsc-doc .hsc-merk{margin:var(--hsc-doc-para) 0;padding:2pt 0 2pt 10pt;border-left-width:3pt}
+.hsc-doc .hsc-merk__text{font-size:var(--hsc-doc-h3);font-weight:var(--hsc-weight-medium)}
+.hsc-doc .hsc-merk__source{font-size:var(--hsc-doc-body)}
+.hsc-doc__footer{position:absolute;left:var(--hsc-page-margin-side);right:var(--hsc-page-margin-side);bottom:var(--hsc-page-header);
+  text-align:center;font-size:var(--hsc-doc-footer);line-height:1.3;color:var(--hsc-text)}
+.hsc-doc__footer p{margin:0}
+
+/* Druck */
+@media print{
+  .hsc-doc--a4{width:auto;min-height:0;padding:0}
+  @page{size:A4;margin:var(--hsc-page-margin-top) var(--hsc-page-margin-side) var(--hsc-page-margin-bottom)}
+}

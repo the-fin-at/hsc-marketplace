@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HSC · Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--hsc-white);color:var(--hsc-text);font-family:var(--hsc-font);font-size:15px;line-height:1.55}
+  .wrap{max-width:1180px;margin:0 auto;padding:48px 32px 120px}
+  header.top{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:28px;border-bottom:1px solid var(--hsc-line)}
+  header.top img{width:260px;height:auto}
+  header.top h1{margin:0;font-size:28px;font-weight:600;letter-spacing:-.01em}
+  header.top p{margin:4px 0 0}
+  nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin:18px 0 0;font-size:13px}
+  nav a{color:var(--hsc-blue);text-decoration:none;font-weight:500}
+  section{margin-top:72px}
+  .kick{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;display:flex;align-items:center;gap:10px}
+  .kick::before{content:"";width:24px;height:3px;background:var(--hsc-green)}
+  h2{font-size:28px;font-weight:600;letter-spacing:-.01em;margin:10px 0 6px}
+  h3{font-size:16px;font-weight:600;margin:28px 0 10px}
+  .lede{max-width:780px;margin:0 0 24px}
+  p{margin:0 0 12px}
+  code{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:.92em;background:var(--hsc-surface);padding:1px 5px;border-radius:3px}
+  .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.04em;padding:2px 7px;border-radius:3px;vertical-align:middle;margin-left:6px}
+  .tag--hsc{background:var(--hsc-green-tint);color:var(--hsc-text)}
+  .tag--doku{background:var(--hsc-blue-tint);color:var(--hsc-blue)}
+  .tag--abg{background:var(--hsc-surface);color:var(--hsc-text)}
+  .tag--vor{background:#fff;border:1px dashed var(--hsc-blue-light);color:var(--hsc-blue)}
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+  .sw{border:1px solid var(--hsc-line);border-radius:var(--hsc-radius);overflow:hidden;background:#fff}
+  .sw i{display:block;height:84px}
+  .sw b{display:block;padding:10px 12px 0;font-size:13px}
+  .sw code{display:block;padding:2px 12px 0;background:none;font-size:11px}
+  .sw small{display:block;padding:4px 12px 12px;font-size:12px;line-height:1.35}
+  table{border-collapse:collapse;width:100%;font-size:14px}
+  th,td{text-align:left;padding:10px 10px;border-bottom:1px solid var(--hsc-line);vertical-align:top}
+  th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+  td.ok{color:var(--hsc-blue);font-weight:600}
+  td.no{color:var(--hsc-text);font-weight:600;text-decoration:underline;text-decoration-color:var(--hsc-blue-light)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .demo{border:1px dashed var(--hsc-line);border-radius:var(--hsc-radius);padding:28px;position:relative;background:#fff}
+  .demo .lab{position:absolute;right:14px;top:10px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+  .demo--blue{background:var(--hsc-blue);color:#fff;border-color:var(--hsc-blue)}
+  .demo--blue .lab{color:#fff}
+  .stage{font-family:var(--hsc-font);font-size:var(--hsc-slide-body);line-height:var(--hsc-slide-lh)}   /* Folienmaßstab 1:1 */
+  .dodont{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .dodont > div{border:1px solid var(--hsc-line);border-radius:var(--hsc-radius);padding:22px 24px;background:#fff}
+  .dodont h3{margin:0 0 10px;font-size:16px}
+  .dodont ul{margin:0;padding-left:0;list-style:none}
+  .dodont li{margin:6px 0;padding-left:1.2em;position:relative}
+  .dodont li::before{content:"–";position:absolute;left:0}
+  .thumbs{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .thumbs img{width:100%;display:block;border:1px solid var(--hsc-line);border-radius:var(--hsc-radius)}
+  .thumbs figure{margin:0}
+  .thumbs figcaption{font-size:13px;margin-top:8px}
+  .thumbs a{color:var(--hsc-blue)}
+  .rules h3{margin-top:32px}
+  .rules ul{list-style:none;padding-left:0;margin:0 0 12px}
+  .rules li{position:relative;padding-left:1.2em;margin:5px 0}
+  .rules li::before{content:"–";position:absolute;left:0}
+  .ex{color:var(--hsc-green);font-weight:500}
+  .measure{font-size:13px;line-height:1.8}
+  .measure b{font-weight:600}
+  .gridviz{position:relative;width:640px;height:360px;border:1px solid var(--hsc-line);background:#fff;font-size:11px}
+  .gridviz .col{position:absolute;top:32px;bottom:44px;background:var(--hsc-blue-tint)}
+  .gridviz .zone{position:absolute;left:32px;right:32px;border:1px dashed var(--hsc-blue-light);color:var(--hsc-blue);padding:2px 4px}
+  .note{border-left:4px solid var(--hsc-blue-light);padding:8px 14px;background:var(--hsc-blue-tint);margin:12px 0;font-size:14px}
+  .docpreview{transform:scale(.62);transform-origin:top left;width:210mm;height:calc(297mm*.62);overflow:visible}
+  .docwrap{height:calc(297mm*.62 + 8px);overflow:hidden;border:1px solid var(--hsc-line)}
+  sup{font-size:.7em;line-height:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div>
+    <h1>HSC · Design System</h1>
+    <p>HÖRHAN Strategy Consultants — Folien, Handouts und Dokumente. Stand 17.09.2026, Quelle: Styleguide vom 18.02.2026.</p>
+    <nav>
+      <a href="#marke">01 Marke</a><a href="#farben">02 Farben</a><a href="#typo">03 Typografie</a><a href="#raster">04 Raster</a>
+      <a href="#bausteine">05 Bausteine</a><a href="#folien">06 Beispielfolien</a><a href="#dokument">07 Dokument</a><a href="#dodont">08 Do / Don't</a><a href="#schreibregeln">09 Schreibregeln HSC</a>
+    </nav>
+  </div>
+  <img src="assets/hsc-logo.png" alt="HÖRHAN Strategy Consultants">
+</header>
+
+<p style="margin-top:20px;font-size:13px">Kennzeichnung im ganzen Paket:
+  <span class="tag tag--hsc">HSC</span> steht so im Styleguide ·
+  <span class="tag tag--doku">HSC-Doku</span> aus der Formatierung des Styleguide-Dokuments abgelesen ·
+  <span class="tag tag--abg">abgeleitet</span> von uns aus HSC-Werten abgeleitet, nicht HSC-freigegeben ·
+  <span class="tag tag--vor">Vorschlag</span> keine HSC-Vorgabe vorhanden, unser Vorschlag
+</p>
+
+<!-- ============================================================ -->
+<section id="marke">
+  <div class="kick">01 · Marke</div>
+  <h2>Klar, sachlich, grün.</h2>
+  <p class="lede">HÖRHAN Strategy Consultants (HSC) berät im Gesundheitssystem: Strategieberatung / Public Health / Public Affairs / Stakeholder Management. Das Erscheinungsbild ist bewusst schlicht: eine Schrift, eine Textfarbe, ein Grün als Hauptfarbe und zwei Blautöne für Grafik. Wenig Farbe, viel Weiß, klare Reihenfolge.</p>
+  <table>
+    <tr><th>Name</th><td>HÖRHAN Strategy Consultants — im Fließtext mit HÖRHAN in Versalien, so schreibt es der Styleguide selbst. Kurzform: HSC. Firmierung: HÖRHAN Strategy Consultants GmbH. <span class="tag tag--doku">HSC-Doku</span></td></tr>
+    <tr><th>Claim / Leitsatz</th><td>„Wir inspirieren, vernetzen, beraten und setzen um – mit langjähriger Systemkenntnis und Methodenkompetenz.“ (Beispielsatz im Styleguide; kein offizieller Claim festgelegt) <span class="tag tag--doku">HSC-Doku</span></td></tr>
+    <tr><th>Leistungsfelder</th><td>Strategieberatung / Public Health / Public Affairs / Stakeholder Management <span class="tag tag--hsc">HSC</span></td></tr>
+    <tr><th>Logo</th><td>Wortmarke: „HÖRHAN“ in Grün (Serifenschrift, im Logo gemessen #39AA4E), darunter „STRATEGY CONSULTANTS“ in Schwarz, gesperrt. Datei: <code>assets/hsc-logo.png</code> (1805 × 462 px, transparenter Hintergrund; aus der Kopfzeile des Styleguide-Dokuments). Nur auf Weiß einsetzen — der schwarze Zusatz ist auf Dunkelblau nicht lesbar; eine Weiß-Variante liegt uns nicht vor. <span class="tag tag--doku">HSC-Doku</span></td></tr>
+    <tr><th>Firmenangaben</th><td>HÖRHAN Strategy Consultants GmbH · Plankengasse 2 · Top 12 · 1010 Wien · office@hoerhan.at · +43 676 5504477 · hoerhan.at · UID ATU78495969 · FN 587070 p. (Bankverbindung steht in der Word-Fußzeile, gehört aber nicht in Folien und Handouts.) <span class="tag tag--doku">HSC-Doku</span></td></tr>
+    <tr><th>Produkte</th><td>Präsentationen (16:9, 1280 × 720 px Bühne) · Handouts und Dokumente (A4) · Textprodukte, die dem Styleguide für Mikrotypografie folgen</td></tr>
+  </table>
+</section>
+
+<!-- ============================================================ -->
+<section id="farben">
+  <div class="kick">02 · Farben</div>
+  <h2>Grau trägt den Text, Grün ist die Marke, Blau ist Grafik.</h2>
+  <p class="lede">Der Styleguide legt drei Textfarben und drei Grafikfarben fest. Alles andere hier ist aus diesen Werten gemischt und entsprechend gekennzeichnet.</p>
+
+  <h3>Textfarben <span class="tag tag--hsc">HSC</span></h3>
+  <div class="swatches">
+    <div class="sw"><i style="background:#575756"></i><b>Grau</b><code>#575756 · --hsc-text</code><small>Fließtext, Überschriften 2–4, Kicker, Fußzeile. Die Arbeitsfarbe für alles Lesbare.</small></div>
+    <div class="sw"><i style="background:#34AB52"></i><b>Grün</b><code>#34AB52 · --hsc-green</code><small>Hauptfarbe. Überschrift 1, Balken bei Merksätzen, Titel-Akzent. Nicht für kleinen Text — siehe Kontrast.</small></div>
+    <div class="sw"><i style="background:#FFFFFF;border-bottom:1px solid #D5D5D4"></i><b>Weiß</b><code>#FFFFFF · --hsc-white</code><small>Text auf Dunkelblau; zugleich der Hintergrund aller hellen Flächen.</small></div>
+  </div>
+
+  <h3>Grafikfarben <span class="tag tag--hsc">HSC</span></h3>
+  <div class="swatches">
+    <div class="sw"><i style="background:#003399"></i><b>Dunkelblau</b><code>#003399 · --hsc-blue</code><small>Kapiteltrenner, gefüllte Boxen, Schrittziffern, Balken über Prozessschritten. Mit weißem Text.</small></div>
+    <div class="sw"><i style="background:#0099FF"></i><b>Hellblau</b><code>#0099FF · --hsc-blue-light</code><small>Zweite Grafikfarbe: Konnektoren, Kapitelziffer auf Dunkelblau, Diagramm-Zweitfarbe.</small></div>
+    <div class="sw"><i style="background:#FFFFFF;border-bottom:1px solid #D5D5D4"></i><b>Weiß</b><code>#FFFFFF</code><small>Hintergrund.</small></div>
+  </div>
+
+  <h3>Abgeleitete Farben <span class="tag tag--abg">abgeleitet, nicht HSC-freigegeben</span></h3>
+  <p>Für Linien und ruhige Flächen, die der Styleguide nicht vorsieht. Alle vier sind Mischungen einer HSC-Farbe mit Weiß, kein neuer Farbton. HSC sollte sie freigeben oder durch eigene Werte ersetzen.</p>
+  <div class="swatches">
+    <div class="sw"><i style="background:#D5D5D4"></i><b>Linie</b><code>#D5D5D4 · --hsc-line</code><small>Grau 25 % auf Weiß. Boxrahmen, Trennlinien, Fußlinie — immer 1 px.</small></div>
+    <div class="sw"><i style="background:#F4F4F3"></i><b>Fläche</b><code>#F4F4F3 · --hsc-surface</code><small>Grau 8 % auf Weiß. Ruhige Box ohne Rahmen.</small></div>
+    <div class="sw"><i style="background:#EBF7EE"></i><b>Grün-Tint</b><code>#EBF7EE · --hsc-green-tint</code><small>Grün 10 % auf Weiß. Merksatz-Fläche, Hinweis.</small></div>
+    <div class="sw"><i style="background:#EBEFF7"></i><b>Blau-Tint</b><code>#EBEFF7 · --hsc-blue-tint</code><small>Dunkelblau 8 % auf Weiß. Hervorgehobene Box („Nächster Schritt“).</small></div>
+  </div>
+
+  <h3>Kontrast nach WCAG 2.1 (geprüft am 17.09.2026)</h3>
+  <p>Gerechnet nach der WCAG-Formel für relative Leuchtdichte. AA verlangt 4,5:1 für normalen Text und 3:1 für großen Text (ab 24 px normal oder 18,7 px fett) sowie für grafische Elemente.</p>
+  <table>
+    <tr><th>Kombination</th><th>Verhältnis</th><th>Normaler Text (4,5:1)</th><th>Großer Text / Grafik (3:1)</th><th>Folge für das Design</th></tr>
+    <tr><td>Grau #575756 auf Weiß</td><td>7,23 : 1</td><td class="ok">AA</td><td class="ok">AA</td><td>Standard für alles Lesbare.</td></tr>
+    <tr><td>Grau auf Grün-Tint / Fläche / Blau-Tint</td><td>6,57 · 6,57 · 6,28 : 1</td><td class="ok">AA</td><td class="ok">AA</td><td>Text in getönten Boxen bleibt Grau.</td></tr>
+    <tr><td>Weiß auf Dunkelblau #003399</td><td>10,86 : 1</td><td class="ok">AA</td><td class="ok">AA</td><td>Dunkelblau ist die einzige Farbfläche, die Text tragen darf.</td></tr>
+    <tr><td>Dunkelblau auf Weiß</td><td>10,86 : 1</td><td class="ok">AA</td><td class="ok">AA</td><td>Auch als Textfarbe möglich (z. B. Links), im Styleguide aber nur als Grafikfarbe vorgesehen.</td></tr>
+    <tr><td>Grün #34AB52 auf Weiß</td><td>2,96 : 1</td><td class="no">nein</td><td class="no">knapp nein (3,0 nötig)</td><td>Kein Fließtext in Grün. Grün nur, wo die Information auch ohne die Farbe erkennbar ist: Überschrift 1 / Titel ab 48 px, Balken, Markierung. Der Styleguide selbst setzt Beispiele in 10 pt Grün — das verfehlt AA deutlich; offener Punkt für HSC.</td></tr>
+    <tr><td>Weiß auf Grün</td><td>2,96 : 1</td><td class="no">nein</td><td class="no">nein</td><td>Keine grünen Boxen oder Buttons mit weißem Text.</td></tr>
+    <tr><td>Weiß auf Hellblau #0099FF</td><td>3,00 : 1</td><td class="no">nein</td><td class="ok">AA (exakt an der Grenze)</td><td>Hellblau nicht als Textfläche; als Konnektor, Linie und Diagrammfarbe.</td></tr>
+    <tr><td>Hellblau auf Dunkelblau</td><td>3,62 : 1</td><td class="no">nein</td><td class="ok">AA</td><td>Große Kapitelziffer (96 px) auf dem Trenner ist in Ordnung; kein kleiner Text.</td></tr>
+    <tr><td>Grün auf Grau</td><td>2,44 : 1</td><td class="no">nein</td><td class="no">nein</td><td>Grün und Grau nie aufeinander legen.</td></tr>
+  </table>
+  <div class="note"><b>Regel für Grün:</b> Grün ist Akzent und Marke, nicht Lesefarbe. Erlaubt: Überschrift 1 in Dokumenten (20 pt Versalien, wie HSC es selbst tut), Folientitel ab 48 px als bewusste Ausnahme (<code>.hsc-title--green</code>), der Balken vor Merksätzen, die Markierung des aktuellen Prozessschritts, das Logo. Nicht erlaubt: Fließtext, Beispiele in 10 pt, Text unter 48 px, weißer Text auf Grün.</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="typo">
+  <div class="kick">03 · Typografie</div>
+  <h2>Montserrat — und sonst nichts.</h2>
+  <p class="lede">„Als HSC-Schriftart kommt in HSC-Dokumenten ausschließlich Montserrat zur Anwendung. Dieser Font ist bei sämtlichen Texten und Präsentationen zu verwenden.“ <span class="tag tag--hsc">HSC</span> Die Schriftdateien liegen unter <code>assets/</code> (SIL Open Font License 1.1, Lizenztext <code>OFL-Montserrat.txt</code>). Fallback nur für den Notfall: Arial.</p>
+
+  <h3>Schnitte im Paket</h3>
+  <table>
+    <tr><th>Schnitt</th><th>Gewicht</th><th>Einsatz</th><th>Muster</th></tr>
+    <tr><td>Regular</td><td>400</td><td>Fließtext, Überschrift 1 + 2 (im Word-Dokument nicht fett)</td><td style="font-weight:400;font-size:18px">Gesundheitssystem, Methodenkompetenz</td></tr>
+    <tr><td>Italic</td><td>400 kursiv</td><td>Betonung im Fließtext, Quellenangaben</td><td style="font-style:italic;font-size:18px">Quelle: HSC-Befragung 2026</td></tr>
+    <tr><td>Medium</td><td>500</td><td>Kicker, Labels, Merksatz auf Folien <span class="tag tag--vor">Vorschlag</span></td><td style="font-weight:500;font-size:18px">02 · Stakeholder Management</td></tr>
+    <tr><td>SemiBold</td><td>600</td><td>Überschrift 3 + 4, Folientitel, Boxtitel — „fett“ im Sinn des Styleguides <span class="tag tag--doku">HSC-Doku</span></td><td style="font-weight:600;font-size:18px">Vier Leistungsfelder, ein Ziel</td></tr>
+    <tr><td>SemiBold Italic</td><td>600 kursiv</td><td>selten: betonte Zwischenzeile</td><td style="font-weight:600;font-style:italic;font-size:18px">Best Practice</td></tr>
+    <tr><td>Bold</td><td>700</td><td>Reserve; nur wenn 600 zu leicht wirkt (große Ziffern)</td><td style="font-weight:700;font-size:18px">02</td></tr>
+  </table>
+
+  <h3>Dokumente (A4) — Größen in pt <span class="tag tag--hsc">HSC</span></h3>
+  <table>
+    <tr><th>Ebene</th><th>Größe</th><th>Form</th><th>Token</th><th>Muster</th></tr>
+    <tr><td>Überschrift 1</td><td>20 pt</td><td>Versalien, Grün, Abstand davor 18 pt <span class="tag tag--doku">HSC-Doku</span></td><td><code>--hsc-doc-h1</code></td><td style="font-size:20pt;text-transform:uppercase;color:var(--hsc-green);line-height:1.2">Überschrift 1</td></tr>
+    <tr><td>Überschrift 2</td><td>16 pt</td><td>Versalien, Grau, Abstand davor 12 pt <span class="tag tag--doku">HSC-Doku</span></td><td><code>--hsc-doc-h2</code></td><td style="font-size:16pt;text-transform:uppercase;line-height:1.2">Überschrift 2</td></tr>
+    <tr><td>Überschrift 3</td><td>12 pt</td><td>fett, Laufweite +1 pt <span class="tag tag--doku">HSC-Doku</span></td><td><code>--hsc-doc-h3</code></td><td style="font-size:12pt;font-weight:600;letter-spacing:.05em">Überschrift 3</td></tr>
+    <tr><td>Überschrift 4</td><td>10 pt</td><td>fett <span class="tag tag--doku">HSC-Doku</span></td><td><code>--hsc-doc-h4</code></td><td style="font-size:10pt;font-weight:600">Überschrift 4</td></tr>
+    <tr><td>Fließtext</td><td>10 pt</td><td>linksbündig, Zeilenabstand 1,15, Absatzabstand 6 pt</td><td><code>--hsc-doc-body</code></td><td style="font-size:10pt">Fließtexte sind linksbündig gehalten.</td></tr>
+    <tr><td>Fußzeile</td><td>9 pt</td><td>zentriert <span class="tag tag--doku">HSC-Doku</span></td><td><code>--hsc-doc-footer</code></td><td style="font-size:9pt">HÖRHAN Strategy Consultants GmbH | Plankengasse 2 | Top 12 | 1010 Wien</td></tr>
+  </table>
+
+  <h3>Folien (1280 × 720 px) — Größen in px <span class="tag tag--vor">Vorschlag</span></h3>
+  <p>Der Styleguide nennt nur Word-Größen. Für Folien schlagen wir eine feste Umrechnung vor: <b>Folien-px = Word-pt × 2,4</b>. Damit bleibt die Hierarchie 20 : 16 : 12 : 10 erhalten, und der 10-pt-Fließtext wird zu 24 px — das entspricht 18 pt auf einer 13,33-Zoll-PowerPoint-Folie und ist aus fünf Metern lesbar. Ergänzt um drei Folien-Größen, die Word nicht kennt (Kicker, Fußzeile, Kapitelziffer).</p>
+  <table>
+    <tr><th>Rolle</th><th>Word</th><th>Folie</th><th>Form</th><th>Token</th><th>Muster (1:1)</th></tr>
+    <tr><td>Folientitel</td><td>20 pt</td><td>48 px</td><td>SemiBold, Grau; Versalien optional (<code>--caps</code>)</td><td><code>--hsc-slide-h1</code></td><td class="stage" style="font-size:48px;font-weight:600;line-height:1.1">Folientitel</td></tr>
+    <tr><td>Untertitel / Abschnitt</td><td>16 pt</td><td>38 px</td><td>Regular oder SemiBold</td><td><code>--hsc-slide-h2</code></td><td class="stage" style="font-size:38px;line-height:1.1">Untertitel</td></tr>
+    <tr><td>Schritt-Titel, Merksatz</td><td>12 pt</td><td>29 px</td><td>SemiBold bzw. Medium</td><td><code>--hsc-slide-h3</code></td><td class="stage" style="font-size:29px;font-weight:600">Schritt-Titel</td></tr>
+    <tr><td>Fließtext, Aufzählung, Boxtitel</td><td>10 pt</td><td>24 px</td><td>Regular; Boxtitel SemiBold</td><td><code>--hsc-slide-body</code></td><td class="stage">Fließtext auf der Folie</td></tr>
+    <tr><td>Nebentext in Boxen</td><td>—</td><td>18 px</td><td>Regular</td><td><code>--hsc-slide-small</code></td><td class="stage" style="font-size:18px">Nebentext in Boxen</td></tr>
+    <tr><td>Kicker (Kapitelname)</td><td>—</td><td>16 px</td><td>Medium, Versalien, Laufweite 8 %</td><td><code>--hsc-slide-kicker</code></td><td class="stage" style="font-size:16px;font-weight:500;letter-spacing:.08em;text-transform:uppercase">02 · Kapitelname</td></tr>
+    <tr><td>Fußzeile, Seitenzahl</td><td>—</td><td>14 px</td><td>Regular</td><td><code>--hsc-slide-footer</code></td><td class="stage" style="font-size:14px">HÖRHAN Strategy Consultants · Strategie 2027</td></tr>
+    <tr><td>Titel auf Titelfolie / Trenner</td><td>—</td><td>64 px</td><td>SemiBold</td><td><code>--hsc-slide-title-slide</code></td><td class="stage" style="font-size:64px;font-weight:600;line-height:1">Titel</td></tr>
+    <tr><td>Kapitelziffer</td><td>—</td><td>96 px</td><td>SemiBold, Hellblau auf Dunkelblau</td><td><code>--hsc-slide-display</code></td><td class="stage" style="font-size:96px;font-weight:600;line-height:1;color:var(--hsc-blue-light);background:var(--hsc-blue);padding:0 12px;display:inline-block">02</td></tr>
+  </table>
+</section>
+
+<!-- ============================================================ -->
+<section id="raster">
+  <div class="kick">04 · Gestaltungsraster</div>
+  <h2>Ein Raster, bis HSC eines festlegt.</h2>
+  <p class="lede">Der Styleguide erwähnt ein Gestaltungsraster („Platzierung und Gewichtung von Logo, Bild und/oder Text … Bildgrößen, Spaltenbreiten, Satzarten und Schriftgrößen“). Laut Kommentar von HSC vom 18.02.2026 existiert es noch nicht. Alles in diesem Abschnitt ist deshalb <span class="tag tag--vor">Vorschlag</span> — mit Ausnahme der Seitenränder, die aus der Word-Vorlage stammen.</p>
+
+  <div class="grid2">
+    <div>
+      <h3>Folie 1280 × 720 px</h3>
+      <div class="gridviz">
+        <div class="col" style="left:32px;width:37px"></div><div class="col" style="left:81px;width:37px"></div><div class="col" style="left:130px;width:37px"></div><div class="col" style="left:179px;width:37px"></div><div class="col" style="left:228px;width:37px"></div><div class="col" style="left:277px;width:37px"></div><div class="col" style="left:326px;width:37px"></div><div class="col" style="left:375px;width:37px"></div><div class="col" style="left:424px;width:37px"></div><div class="col" style="left:473px;width:37px"></div><div class="col" style="left:522px;width:37px"></div><div class="col" style="left:571px;width:37px"></div>
+        <div class="zone" style="top:20px;height:56px">Kopfzone 0–152 px: Kicker (y 56), Titel (y 88), Logo rechts (y 48, 200 px breit)</div>
+        <div class="zone" style="top:84px;height:232px">Inhalt 168–632 px</div>
+        <div class="zone" style="top:328px;height:24px;border-style:solid">Fußlinie y 656 · Fußzeile / Seitenzahl y 672</div>
+      </div>
+      <p class="measure" style="margin-top:12px">
+        <b>Rand</b> 64 px links, rechts, oben · <b>12 Spalten</b> à 74 px, Spaltenabstand 24 px · <b>Kopfzone</b> 0–152 px · <b>Inhalt</b> 168–632 px (bei Untertitel ab 232 px) · <b>Fußlinie</b> 656 px · <b>Fußzeile</b> 672 px.<br>
+        Vier Boxen = je 3 Spalten (268 px), drei Boxen = je 4 Spalten (366 px), zwei Spalten = je 6 (564 px). Tokens: <code>--hsc-slide-*</code>.
+      </p>
+    </div>
+    <div>
+      <h3>Dokument A4 <span class="tag tag--doku">HSC-Doku</span></h3>
+      <p class="measure">
+        <b>Seitenränder</b> oben 2,5 cm · links/rechts 2,5 cm · unten 1 cm · Kopfzeile 1 cm von der Kante · Fußzeile 2 cm von der Kante (aus <code>sectPr</code> der Word-Vorlage).<br>
+        <b>Kopfzeile</b> Logo zentriert, 37,6 mm breit.<br>
+        <b>Fußzeile</b> zentriert, 9 pt, Angaben mit „ | “ getrennt: Firmierung | Adresse; UID | FN; Kontakt. Ohne Bankverbindung.<br>
+        <b>Satzspiegel</b> 16 cm breit, einspaltig, Fließtext linksbündig (Flattersatz). <b>Listeneinzug</b> 1,27 cm.<br>
+        <span class="tag tag--vor" style="margin-left:0">Vorschlag</span> Bilder laufen über die volle Satzspiegelbreite oder über die Hälfte (7,8 cm) mit Text daneben; Tabellen mit 1-px-Linien in <code>--hsc-line</code>, Kopfzeile Grau fett.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="bausteine">
+  <div class="kick">05 · Bausteine</div>
+  <h2>Sieben Bausteine, mehr braucht es nicht.</h2>
+  <p class="lede">Alle Klassen stehen in <code>components.css</code>, Präfix <code>hsc-</code>. Die Folienbausteine sind hier im Maßstab 1:1 gezeigt, also so groß wie auf der Folie.</p>
+
+  <h3>Folien-Chrome: Kicker, Logo, Fußlinie, Fußzeile, Seitenzahl</h3>
+  <p>Jede Inhaltsfolie hat dasselbe Gerüst: Kicker oben links (Kapitelnummer · Kapitelname), Logo oben rechts (200 px), Fußlinie 1 px, Fußzeile links („HÖRHAN Strategy Consultants · Projektname“), Seitenzahl rechts. Titelfolie: Logo groß (320 px), grüner Balken, Titel 64 px. Kapiteltrenner: Dunkelblau, kein Logo (siehe Marke), Ziffer Hellblau 96 px.</p>
+
+  <div class="grid2">
+    <div class="demo stage"><span class="lab">.hsc-box</span>
+      <div class="hsc-box" style="width:268px;height:220px"><div class="hsc-box__title">Public Health</div><div class="hsc-box__text">Versorgungspfade, Prävention und Evidenz – von der Analyse bis zur Umsetzung.</div></div>
+    </div>
+    <div class="demo stage"><span class="lab">.hsc-box--blue / --tint / --surface</span>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <div class="hsc-box hsc-box--blue" style="width:200px;height:150px"><div class="hsc-box__title">Blau</div><div class="hsc-box__text">Weiß auf Dunkelblau.</div></div>
+        <div class="hsc-box hsc-box--tint" style="width:200px;height:150px"><div class="hsc-box__title">Tint</div><div class="hsc-box__text">Hervorgehoben, ruhig.</div></div>
+        <div class="hsc-box hsc-box--surface" style="width:200px;height:150px"><div class="hsc-box__title">Fläche</div><div class="hsc-box__text">Ohne Rahmen.</div></div>
+      </div>
+    </div>
+  </div>
+  <p style="margin-top:12px"><b>Box.</b> Weiß, 1-px-Rahmen in <code>--hsc-line</code>, Radius 4 px, Innenabstand 24 px. Boxtitel 24 px SemiBold (≙ Überschrift 4), Text 18 px. Bei ein bis zwei Boxen je Reihe <code>.hsc-box--lg</code> (Titel 29 px). Höchstens eine Box je Reihe darf gefüllt sein (<code>--blue</code> oder <code>--tint</code>) — die, auf die es ankommt.</p>
+
+  <div class="demo stage" style="margin-top:20px"><span class="lab">.hsc-steps › .hsc-step</span>
+    <div class="hsc-steps">
+      <div class="hsc-step"><span class="hsc-step__num">1</span><div class="hsc-step__title">Analysieren</div><div class="hsc-step__text">Akteur:innen, Interessen und Einfluss erfassen.</div></div>
+      <div class="hsc-step hsc-step--current"><span class="hsc-step__num">2</span><div class="hsc-step__title">Priorisieren</div><div class="hsc-step__text">Wen wir zuerst ansprechen.</div></div>
+      <div class="hsc-step"><span class="hsc-step__num">3</span><div class="hsc-step__title">Umsetzen</div><div class="hsc-step__text">Maßnahmen verankern.</div></div>
+    </div>
+  </div>
+  <p style="margin-top:12px"><b>Prozessschritte.</b> Balken 4 px Dunkelblau oben, Ziffer im dunkelblauen Kreis (44 px), Hellblau-Konnektor 2 px zwischen den Ziffern. Titel 29 px SemiBold, Text 18 px. Aktueller Schritt: <code>.hsc-step--current</code> färbt nur den Balken grün; die Ziffer bleibt Dunkelblau, weil Weiß auf Grün den Kontrast verfehlt.</p>
+
+  <div class="grid2" style="margin-top:20px">
+    <div class="demo stage"><span class="lab">.hsc-list</span>
+      <ul class="hsc-list">
+        <li>Eine Landkarte der relevanten Akteur:innen</li>
+        <li>Drei priorisierte Botschaften je Zielgruppe
+          <ul><li>Politik und Verwaltung</li><li>Sozialversicherung</li></ul></li>
+        <li>Einen Zeitplan bis Q2 / 2027</li>
+      </ul>
+    </div>
+    <div class="demo stage"><span class="lab">.hsc-merk</span>
+      <div class="hsc-merk"><p class="hsc-merk__text" style="margin:0">Wir inspirieren, vernetzen, beraten und setzen um – mit langjähriger Systemkenntnis und Methodenkompetenz.</p><p class="hsc-merk__source" style="margin:8px 0 0">HÖRHAN Strategy Consultants</p></div>
+    </div>
+  </div>
+  <p style="margin-top:12px"><b>Aufzählung.</b> Gliederungszeichen ist der Gedankenstrich „–“ — der Styleguide nennt ihn ausdrücklich als Gliederungszeichen in Aufzählungen. Keine Punkte, Häkchen oder Pfeile. Zweite Ebene eingerückt, 18 px. Groß-/Kleinschreibung nach den Schreibregeln (Abschnitt 09). <b>Merksatz / Zitat.</b> Grüner Balken 6 px links, Text 29 px Medium, Quelle 18 px darunter. Mit <code>.hsc-merk--tint</code> auf Grün-Tint-Fläche. Auf Dunkelblau wird der Balken Hellblau.</p>
+
+  <div class="demo" style="margin-top:20px;padding:0;overflow:hidden"><span class="lab">.hsc-footrule / .hsc-footer / .hsc-pagenum</span>
+    <div class="stage" style="position:relative;height:90px;background:#fff">
+      <span class="hsc-footrule" style="top:36px"></span>
+      <div class="hsc-footer" style="top:52px">HÖRHAN Strategy Consultants · Strategie 2027</div>
+      <div class="hsc-pagenum" style="top:52px">8</div>
+    </div>
+  </div>
+  <p style="margin-top:12px"><b>Fußzeile Folie.</b> Links: „HÖRHAN Strategy Consultants · Projekt- oder Deckname“, rechts Seitenzahl, beides 14 px Grau; Fußlinie 1 px. Auf der Titelfolie steht stattdessen die Kurzfassung der Firmenangaben (Firmierung · Adresse · E-Mail · Web). <b>Fußzeile Dokument.</b> Wie in der Word-Vorlage: zentriert, 9 pt, drei Zeilen (Firmierung | Adresse · UID | FN · Kontakt), ohne Bankverbindung.</p>
+</section>
+
+<!-- ============================================================ -->
+<section id="folien">
+  <div class="kick">06 · Beispielfolien</div>
+  <h2>Vier Folien, die das System zeigen.</h2>
+  <p class="lede">Als HTML (öffnen, kopieren, Text tauschen) und als PNG. Inhalte sind erfunden und dienen nur der Demonstration.</p>
+  <div class="thumbs">
+    <figure><a href="slides/slide-titel.html"><img src="slides/preview-titel.png" alt="Titelfolie"></a><figcaption><b>Titelfolie</b> — Logo 320 px, grüner Balken, Titel 64 px, Untertitel, Datum, Firmenzeile in der Fußzeile. <a href="slides/slide-titel.html">slide-titel.html</a></figcaption></figure>
+    <figure><a href="slides/slide-trenner.html"><img src="slides/preview-trenner.png" alt="Kapiteltrenner"></a><figcaption><b>Kapiteltrenner</b> — Dunkelblau, Kapitelziffer Hellblau 96 px, Titel Weiß 64 px. <a href="slides/slide-trenner.html">slide-trenner.html</a></figcaption></figure>
+    <figure><a href="slides/slide-inhalt.html"><img src="slides/preview-inhalt.png" alt="Inhaltsfolie"></a><figcaption><b>Inhaltsfolie</b> — Titel + Untertitel, vier Boxen (eine gefüllt), Merksatz mit grünem Balken. <a href="slides/slide-inhalt.html">slide-inhalt.html</a></figcaption></figure>
+    <figure><a href="slides/slide-prozess.html"><img src="slides/preview-prozess.png" alt="Prozessfolie"></a><figcaption><b>Prozessfolie</b> — vier Schritte mit Konnektoren, darunter Aufzählung mit Gedankenstrich und Tint-Box mit hochgestellten Titeln (Univ.-Prof.<sup>in</sup> Dr.<sup>in</sup>). <a href="slides/slide-prozess.html">slide-prozess.html</a></figcaption></figure>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="dokument">
+  <div class="kick">07 · Dokument</div>
+  <h2>Die A4-Seite, wie HSC sie setzt.</h2>
+  <p class="lede">Die Klasse <code>.hsc-doc</code> bildet die Word-Vorlage nach: Montserrat 10 pt, Überschriften 20 / 16 / 12 / 10 pt, Logo in der Kopfzeile, dreizeilige Fußzeile. Verkleinert dargestellt (62 %).</p>
+  <div class="docwrap">
+    <div class="docpreview">
+      <div class="hsc-doc hsc-doc--a4">
+        <div class="hsc-doc__header"><img src="assets/hsc-logo.png" alt="HÖRHAN Strategy Consultants"></div>
+        <h1>Stakeholder-Analyse Versorgungspfade</h1>
+        <p>In diesem Dokument fassen wir die Ergebnisse der Befragung von Entscheidungsträger:innen zusammen und leiten daraus Empfehlungen für die Strategie 2027 ab.</p>
+        <h2>Ausgangslage</h2>
+        <p>83 % der Befragten wünschen sich eine gemeinsame Sprache zwischen Politik, Kassen und Leistungserbringern. Die Erhebung fand von März bis Mai 2026 statt (n = 112).</p>
+        <h3>Zusammengesetzte Begriffe</h3>
+        <p>Wortzusammensetzungen werden zusammengeschrieben, wenn sie dadurch nicht zu umständlich zu lesen sind:</p>
+        <ul><li><span class="hsc-example">Gesundheitssystem, Methodenkompetenz, Projektmanagement</span></li><li><span class="hsc-example">Patient:innen-Nutzen, aber: Patient:innenpfade</span></li></ul>
+        <h4>Nächster Schritt</h4>
+        <p>Abstimmung mit Univ.-Prof.<sup>in</sup> Dr.<sup>in</sup> Muster am 3. Oktober 2026 – Ziel ist ein gemeinsames Positionspapier.</p>
+        <div class="hsc-merk"><p class="hsc-merk__text">Wir inspirieren, vernetzen, beraten und setzen um – mit langjähriger Systemkenntnis und Methodenkompetenz.</p></div>
+        <div class="hsc-doc__footer"><p>HÖRHAN Strategy Consultants GmbH | Plankengasse 2 | Top 12 | 1010 Wien</p><p>UID: ATU78495969 | FN 587070 p</p><p>office@hoerhan.at | +43 676 5504477 | hoerhan.at</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="dodont">
+  <div class="kick">08 · Do / Don't</div>
+  <h2>Was das System zusammenhält.</h2>
+  <div class="dodont">
+    <div>
+      <h3>Do</h3>
+      <ul>
+        <li>Montserrat für alles — Titel, Text, Ziffern, Fußzeile.</li>
+        <li>Text in Grau #575756; Weiß nur auf Dunkelblau.</li>
+        <li>Grün als Marke: Überschrift 1, Balken, Titel-Akzent, Logo.</li>
+        <li>Dunkelblau als einzige Fläche, die Text trägt; Hellblau für Linien, Konnektoren, Kapitelziffer.</li>
+        <li>Ein Gedanke pro Folie, höchstens zwei Bausteine im Inhaltsbereich.</li>
+        <li>Gedankenstrich „–“ als Gliederungszeichen in Aufzählungen.</li>
+        <li>Logo nur auf Weiß, immer mit Freiraum, nie verzerrt.</li>
+        <li>Abgeleitete Farben (Linie, Fläche, Tints) nur für Linien und ruhige Flächen.</li>
+        <li>Gendern mit Doppelpunkt, Titel mit hochgestellter Endung — siehe Schreibregeln.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Don't</h3>
+      <ul>
+        <li>Keine zweite Schrift, auch nicht für Zahlen oder Zitate.</li>
+        <li>Kein grüner Fließtext, kein Text unter 48 px in Grün, kein weißer Text auf Grün.</li>
+        <li>Kein Text auf Hellblau; Hellblau und Grün nie nebeneinander als Bedeutungsträger.</li>
+        <li>Keine Schatten, Verläufe, 3D-Effekte, keine Fotos hinter Text.</li>
+        <li>Keine Aufzählungspunkte (•), Häkchen oder Deko-Icons.</li>
+        <li>Nie mehr als eine gefüllte Box je Reihe.</li>
+        <li>Kein Logo auf Dunkelblau oder auf Fotos, keine Umfärbung der Wortmarke.</li>
+        <li>Keine Bankverbindung in Folien oder Handouts.</li>
+        <li>Kein Genderstern, kein Binnen-I, kein Schrägstrich-Gendern — HSC gendert mit Doppelpunkt.</li>
+        <li>Keine Bindestriche als Gedankenstriche.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="schreibregeln" class="rules">
+  <div class="kick">09 · Schreibregeln HSC</div>
+  <h2>Mikrotypografie und Gendern — so schreibt HSC.</h2>
+  <p class="lede">Zusammengefasst aus dem Styleguide „Mikrotypographie“ vom 18.02.2026 <span class="tag tag--hsc">HSC</span>. Beispiele stehen in Grün, wie im Original — bewusst, obwohl Grün in dieser Größe den Kontrast verfehlt (siehe 02); in eigenen Dokumenten Beispiele lieber kursiv setzen. Gilt für alle HSC-Texte: Folien, Handouts, Dokumente, Web. Adaptionen sind möglich, sollen aber im Team besprochen und festgehalten werden.</p>
+
+  <h3>Zusammengesetzte Wörter und Bindestriche</h3>
+  <ul>
+    <li>Zusammensetzungen werden zusammengeschrieben, solange sie gut lesbar bleiben: <span class="ex">Gesundheitssystem, Methodenkompetenz, Projektmanagement</span></li>
+    <li>Leidet die Lesbarkeit oder sollen Teile hervorgehoben werden, kommt ein Bindestrich: <span class="ex">Reverse-Transkriptase-Hemmer, LDL-Cholesterinwert</span></li>
+    <li>Bei gegenderten Zusammensetzungen: <span class="ex">Patient:innen-Nutzen</span> (schlecht lesbar wäre „Patient:innennutzen“), aber <span class="ex">Patient:innenpfade, Patient:innenlenkung</span></li>
+    <li>Doppelnamen und Ergänzungsstriche bei gleichem Anfang oder Ende: <span class="ex">Max-Michael Muster-Master · Beteiligungs- und Innovationsprozesse · Krankenhauspersonal und -equipment</span></li>
+    <li>Englisch + Deutsch wird mit Bindestrich verbunden; rein englische Begriffe stehen mit Leerzeichen: <span class="ex">Social-Media-Beauftragte</span>, aber <span class="ex">Social Media</span>. Sonderfall <span class="ex">Win-Win-Situation</span> (eingebürgert, daher mit Bindestrichen).</li>
+    <li>Zusammensetzungen aus mehreren Substantiven werden in jedem Teilstück großgeschrieben: <span class="ex">HIV-Positive, Blut-Hirn-Schranke</span></li>
+  </ul>
+
+  <h3>Gedankenstriche</h3>
+  <ul>
+    <li>Der Bindestrich (-) ersetzt nie den Gedankenstrich (–).</li>
+    <li>Gedankenstrich bei Satzeinschüben statt Komma: <span class="ex">„Wir inspirieren, vernetzen, beraten und setzen um – mit langjähriger Systemkenntnis und Methodenkompetenz.“</span></li>
+    <li>Als Ergänzungsstrich: <span class="ex">Die Lunge – ein Organ im Fokus</span></li>
+    <li>Als „bis“-Strich ohne Leerzeichen: <span class="ex">1844–1906</span></li>
+    <li>Als Minuszeichen in Rechnungen und als Gliederungszeichen in Aufzählungen.</li>
+  </ul>
+
+  <h3>Leerzeichen</h3>
+  <ul>
+    <li>Vor und nach dem Gedankenstrich steht ein Leerzeichen — außer er ersetzt „bis“: <span class="ex">um – mit</span>, aber <span class="ex">1844–1906</span></li>
+    <li>Beim Schrägstrich setzt HSC Leerzeichen (im Print müsste man darauf verzichten): <span class="ex">Strategieberatung / Public Health / Public Affairs / Stakeholder Management</span></li>
+    <li>Vor Prozentzeichen, Maßeinheiten, Symbolen und Rechenzeichen (%, g, km, EUR, &amp;, §, &lt;, &gt;, =) steht ein Leerzeichen: <span class="ex">„83 % der über 60-Jährigen fühlen sich psychisch fit.“</span> Sonderfall: <span class="ex">10%ige Steigerung</span></li>
+    <li>Abkürzungen wie z.B. schreibt HSC ohne Leerzeichen. Im Fließtext ist die ausgeschriebene Form besser.</li>
+    <li>Auslassungspunkte: Ersetzen sie ein Wort, stehen Leerzeichen davor und danach (in Zitaten mit eckigen Klammern); am Satzende werden sie angehängt: <span class="ex">„Es ist elementar, dass wir zusammenarbeiten […], um die Gesundheitslandschaft zu gestalten.“ · Mit schweren Folgen für das österreichische Gesundheitssystem…</span></li>
+    <li>Bei Bindestrichen keine Leerzeichen, außer das Satzgefüge verlangt es: <span class="ex">Verhaltenskodex-Verfahren · Wissenserweiterung und -transfer</span></li>
+    <li>Klammern stehen direkt am Wort: <span class="ex">Künstliche Intelligenz (KI)</span></li>
+  </ul>
+
+  <h3>Groß- und Kleinschreibung, Satzzeichen in Aufzählungen</h3>
+  <ul>
+    <li>Aufzählungspunkte beginnen groß, wenn sie ein vollständiger Satz sind (dann mit Schlusspunkt) oder mit einem Substantiv beginnen: <span class="ex">Bei der Therapie ist es wichtig, regelmäßig mit den Patient:innen zu sprechen. · Medikamentenausgabe im Spital</span></li>
+    <li>Alle anderen Punkte beginnen klein: <span class="ex">neue, innovative Therapieoptionen</span></li>
+    <li>Englische Wörter im Fließtext klein: <span class="ex">business as usual</span>; Ausnahme bei gebräuchlichen Begriffen: <span class="ex">Best Practice, Off-Label-Use</span></li>
+    <li>In kolumnenartigen Aufzählungen sind keine Satzzeichen nötig: <span class="ex">HÖRHAN Strategy Consultants bietet – Strategieberatung – Public Health – Public Affairs – Stakeholder Management</span></li>
+  </ul>
+
+  <h3>Gendern</h3>
+  <ul>
+    <li>HSC gendert im Normalfall mit Doppelpunkt: <span class="ex">Ärzt:innen, Akteur:innen</span></li>
+    <li>Für Lesbarkeit und Abwechslung sind neutrale Begriffe möglich: <span class="ex">Teilnehmende, Forschende</span></li>
+    <li>Ebenso beide Formen: <span class="ex">Ärztinnen und Ärzte, Forscherinnen und Forscher</span></li>
+    <li>Englische Begriffe werden nicht gegendert: <span class="ex">Stakeholder, Key Opinion Leader</span></li>
+    <li>Übergeordnete, neutral gebrauchte Begriffe bleiben ungegendert: <span class="ex">Partner, Sponsor</span></li>
+    <li>Titel werden gegendert, die Endung wird hochgestellt: <span class="ex">Prim.<sup>a</sup> · Univ.-Prof.<sup>in</sup> · Dr.<sup>in</sup> · Mag.<sup>a</sup></span> (in HTML mit <code>&lt;sup&gt;</code>)</li>
+    <li>Bezieht sich ein Wort nur auf eine Gruppe eines Geschlechts, wird nicht gegendert.</li>
+  </ul>
+
+  <h3>Schreibweise des Firmennamens <span class="tag tag--doku">HSC-Doku</span></h3>
+  <ul>
+    <li>Im Fließtext: <span class="ex">HÖRHAN Strategy Consultants</span> (HÖRHAN in Versalien, so im Styleguide); Kurzform <span class="ex">HSC</span>; Firmierung <span class="ex">HÖRHAN Strategy Consultants GmbH</span>.</li>
+    <li>Fußzeile Dokument: Angaben mit „ | “ getrennt. Fußzeile Folie: mit „ · “ getrennt <span class="tag tag--vor">Vorschlag</span>.</li>
+  </ul>
+</section>
+
+<p style="margin-top:72px;font-size:12px;border-top:1px solid var(--hsc-line);padding-top:16px">HSC Design System · erstellt von THE FIN / Roiss-Weiss GmbH für HÖRHAN Strategy Consultants · Montserrat: The Montserrat Project Authors, SIL Open Font License 1.1 · Logo und Styleguide: HÖRHAN Strategy Consultants GmbH.</p>
+</div>
+</body>
+</html>

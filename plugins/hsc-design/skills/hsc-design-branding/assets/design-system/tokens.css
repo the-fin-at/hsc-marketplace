@@ -1,0 +1,110 @@
+/* =====================================================================
+   HÖRHAN Strategy Consultants (HSC) — Design Tokens
+   Quelle: 260218_STYLEGUIDE_MIKROTYPOGRAPHIE_HSC.docx (Stand 18.02.2026),
+           inkl. styles.xml, Kopf-/Fußzeile und Kommentar.
+   Stand des Pakets: 17.09.2026
+
+   Kennzeichnung:
+     [HSC]        steht wörtlich oder als Wert im Styleguide
+     [HSC-Doku]   aus der Formatierung des Styleguide-Dokuments abgelesen
+                  (styles.xml, Seitenränder, Fußzeile) — nicht als Regel
+                  formuliert, aber so von HSC angewendet
+     [abgeleitet] von uns aus HSC-Werten abgeleitet, nicht HSC-freigegeben
+     [Vorschlag]  keine HSC-Vorgabe vorhanden; unser Vorschlag, bis HSC
+                  etwas festlegt (Gestaltungsraster, Folienumrechnung)
+   ===================================================================== */
+
+:root {
+  /* ---------- Textfarben [HSC] ---------- */
+  --hsc-text:        #575756;  /* Grau — Fließtext, Überschriften 2–4, Fußzeile     */
+  --hsc-green:       #34AB52;  /* Grün — Hauptfarbe; Titel (H1), Akzente, Beispiele */
+  --hsc-white:       #FFFFFF;  /* Weiß — Text auf Dunkelblau                        */
+
+  /* ---------- Grafikfarben [HSC] ---------- */
+  --hsc-blue:        #003399;  /* Dunkelblau — Flächen, Kapiteltrenner, Prozess    */
+  --hsc-blue-light:  #0099FF;  /* Hellblau — zweite Grafikfarbe, Konnektoren       */
+  /* Weiß #FFFFFF ist zugleich Grafikfarbe (Hintergrund). */
+
+  /* ---------- abgeleitete Farben [abgeleitet, nicht HSC-freigegeben] ----------
+     Für Linien und ruhige Flächen, die der Styleguide nicht vorsieht.
+     Mischungen der HSC-Farben mit Weiß; keine neuen Farbtöne.            */
+  --hsc-line:        #D5D5D4;  /* Grau 25 % auf Weiß — Boxrahmen, Trennlinien 1 px */
+  --hsc-surface:     #F4F4F3;  /* Grau 8 % auf Weiß — ruhige Box-Fläche            */
+  --hsc-green-tint:  #EBF7EE;  /* Grün 10 % auf Weiß — Merksatz-/Hinweis-Fläche    */
+  --hsc-blue-tint:   #EBEFF7;  /* Dunkelblau 8 % auf Weiß — Hervorhebungs-Fläche   */
+
+  /* ---------- Schrift [HSC] ----------
+     Ausschließlich Montserrat — in Texten wie in Präsentationen.
+     Schnitte im Paket: Regular 400, Medium 500, SemiBold 600, Bold 700,
+     Italic 400, SemiBold Italic 600 (assets/, SIL OFL 1.1).           */
+  --hsc-font:        "Montserrat", Arial, sans-serif;
+  --hsc-weight-regular: 400;
+  --hsc-weight-medium:  500;   /* [Vorschlag] Kicker, Labels                        */
+  --hsc-weight-bold:    600;   /* [HSC-Doku] Überschrift 3 + 4 sind fett gesetzt;
+                                  SemiBold statt Bold, weil Montserrat Bold bei
+                                  10 pt zuläuft — [Vorschlag]                       */
+
+  /* ---------- Schriftgrößen · Dokumente (A4) in pt [HSC] ---------- */
+  --hsc-doc-h1:      20pt;     /* Überschrift 1 — Versalien [HSC-Doku]              */
+  --hsc-doc-h2:      16pt;     /* Überschrift 2 — Versalien [HSC-Doku]              */
+  --hsc-doc-h3:      12pt;     /* Überschrift 3 — fett, Laufweite +1 pt [HSC-Doku]  */
+  --hsc-doc-h4:      10pt;     /* Überschrift 4 — fett [HSC-Doku]                   */
+  --hsc-doc-body:    10pt;     /* Fließtext, linksbündig                            */
+  --hsc-doc-footer:   9pt;     /* Fußzeile [HSC-Doku]                               */
+  --hsc-doc-lh:      1.15;     /* Zeilenabstand Fließtext [HSC-Doku]                */
+  --hsc-doc-para:     6pt;     /* Absatzabstand davor/danach [HSC-Doku]             */
+  --hsc-doc-h1-before: 18pt;   /* Abstand vor Überschrift 1 [HSC-Doku]              */
+  --hsc-doc-h2-before: 12pt;   /* Abstand vor Überschrift 2 [HSC-Doku]              */
+  --hsc-doc-h3-before: 12pt;   /* Abstand vor Überschrift 3 [HSC-Doku]              */
+  --hsc-doc-list-indent: 1.27cm; /* Einzug Listenabsatz (720 twips) [HSC-Doku]      */
+
+  /* ---------- Seite · Dokumente (A4) [HSC-Doku] ---------- */
+  --hsc-page-margin-top:    2.5cm;
+  --hsc-page-margin-side:   2.5cm;
+  --hsc-page-margin-bottom: 1cm;
+  --hsc-page-header:        1cm;   /* Abstand Kopfzeile von Blattkante              */
+  --hsc-page-footer:        2cm;   /* Abstand Fußzeile von Blattkante               */
+  --hsc-logo-header-w:      37.6mm; /* Logobreite in der Kopfzeile                  */
+
+  /* ---------- Schriftgrößen · Folien (1280 × 720 px) [Vorschlag] ----------
+     Es gibt keine HSC-Vorgabe für Folien. Umrechnung: Folien-px = Word-pt × 2,4.
+     Damit bleibt die Word-Hierarchie 20 : 16 : 12 : 10 erhalten, und
+     10-pt-Fließtext wird zu 24 px (≙ 18 pt auf einer 13,33-Zoll-Folie).   */
+  --hsc-slide-h1:      48px;   /* Folientitel  (20 pt × 2,4)                        */
+  --hsc-slide-h2:      38px;   /* Untertitel, Abschnittstitel (16 pt × 2,4)         */
+  --hsc-slide-h3:      29px;   /* Boxtitel, Schritt-Titel (12 pt × 2,4)             */
+  --hsc-slide-body:    24px;   /* Fließtext, Aufzählung (10 pt × 2,4)               */
+  --hsc-slide-small:   18px;   /* Nebentext in Boxen, Bildunterschrift              */
+  --hsc-slide-kicker:  16px;   /* Kapitelname oben, Versalien                       */
+  --hsc-slide-footer:  14px;   /* Fußzeile, Seitenzahl                              */
+  --hsc-slide-display: 96px;   /* Große Kapitelziffer auf Trennfolien               */
+  --hsc-slide-title-slide: 64px; /* Titel auf der Titelfolie                        */
+  --hsc-slide-lh:      1.3;
+  --hsc-slide-title-lh: 1.1;
+
+  /* ---------- Gestaltungsraster · Folien [Vorschlag] ----------
+     Der Styleguide erwähnt ein Gestaltungsraster; laut Kommentar von HSC
+     existiert es noch nicht. Bis dahin gilt dieses Raster.               */
+  --hsc-slide-w:       1280px;
+  --hsc-slide-h:       720px;
+  --hsc-slide-margin:  64px;   /* Rand links/rechts/oben                            */
+  --hsc-slide-cols:    12;
+  --hsc-slide-gutter:  24px;   /* Spaltenabstand → Spalte = 74 px                   */
+  --hsc-slide-head-h:  152px;  /* Kopfzone: Kicker + Titel (0–152 px)               */
+  --hsc-slide-content-top: 168px; /* Inhalt beginnt hier                            */
+  --hsc-slide-content-bottom: 632px; /* Inhalt endet hier                           */
+  --hsc-slide-footrule-y: 656px;  /* Fußlinie                                       */
+  --hsc-slide-footer-y:   672px;  /* Fußzeile                                       */
+  --hsc-slide-logo-w:  200px;  /* Logo oben rechts auf Inhaltsfolien                */
+
+  /* ---------- Abstände & Radien [Vorschlag] ---------- */
+  --hsc-space-1:   8px;
+  --hsc-space-2:  16px;
+  --hsc-space-3:  24px;
+  --hsc-space-4:  32px;
+  --hsc-space-6:  48px;
+  --hsc-radius:    4px;   /* Boxen, Chips — dezent, weil das Logo scharfkantig ist  */
+  --hsc-radius-0:  0;     /* Flächen, Trenner, Balken: keine Rundung                */
+  --hsc-line-w:    1px;
+  --hsc-bar-w:     6px;   /* Grüner Balken bei Merksatz / Zitat                     */
+}

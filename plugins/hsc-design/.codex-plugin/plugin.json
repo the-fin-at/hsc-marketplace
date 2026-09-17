@@ -1,7 +1,7 @@
 {
   "name": "hsc-design",
-  "version": "0.1.0",
-  "description": "Neusatz vorhandener Unterlagen im Corporate Design von HÖRHAN Strategy Consultants mit Codex.",
+  "version": "0.2.0",
+  "description": "Vorhandene Unterlagen mit dem mitgelieferten HSC Design System gestalten – für ChatGPT und Codex.",
   "author": {
     "name": "THE FIN",
     "url": "https://github.com/the-fin-at"
@@ -18,11 +18,11 @@
   "interface": {
     "displayName": "HSC Design",
     "shortDescription": "Unterlagen im HSC Corporate Design",
-    "longDescription": "Setzt vorhandene Unterlagen als Deck oder A4-Dokument im HSC Corporate Design neu. Benötigt einen bereitgestellten Export des HSC Design Systems mit Tokens, Bausteinen, Montserrat und Logo.",
+    "longDescription": "Enthält HSC-Designregeln, Schreibregeln, HTML-Vorlagen, CSS, Original-Logo und sechs Montserrat-Schnitte. Setzt vorhandene Unterlagen als Deck oder A4-Dokument neu, ohne externen Design-System-Download.",
     "developerName": "THE FIN",
     "category": "Design",
     "defaultPrompt": [
-      "Setze meine Unterlage mit dem bereitgestellten HSC Design System neu."
+      "Setze meine Unterlage im HSC-Design mit den mitgelieferten Vorlagen neu."
     ],
     "capabilities": []
   }
