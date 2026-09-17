@@ -1,6 +1,6 @@
 # HSC Marketplace
 
-Marketplace für HSC-Skills von THE FIN. Enthält `hsc-marketplace` in Version `0.3.0` für Codex und Claude Code sowie `hsc-design` in Version `0.1.0` für Codex.
+Marketplace für HSC-Skills von THE FIN. Enthält `hsc-productivity` in Version `0.4.0` für Codex und Claude Code sowie `hsc-design` in Version `0.1.0` für Codex.
 
 ## Design-Plugin für Codex
 
@@ -16,9 +16,9 @@ codex plugin add hsc-design@hsc-marketplace
 
 Beispiel: „Nutze $hsc-design-branding für diese Unterlage. Das HSC Design System liegt in diesem Ordner: …“
 
-## Enthaltener Skill
+## Productivity-Plugin
 
-[interview](plugins/hsc-marketplace/skills/interview/SKILL.md) klärt eine Aufgabe oder ein Thema mit mindestens 5 und höchstens 10 einzeln gestellten Fragen. Eine ausdrücklich gewünschte Anzahl innerhalb dieses Bereichs wird eingehalten. Jede Frage bietet drei kurze Optionen und die Möglichkeit, frei zu antworten. Der Skill wartet auf echte Antworten, passt die nächste Frage daran an und endet mit der Aufgabenstellung und offenen Punkten. Er recherchiert nicht und setzt die Aufgabe nicht um.
+[interview](plugins/hsc-productivity/skills/interview/SKILL.md) klärt eine Aufgabe oder ein Thema mit mindestens 5 und höchstens 10 einzeln gestellten Fragen. Eine ausdrücklich gewünschte Anzahl innerhalb dieses Bereichs wird eingehalten. Jede Frage bietet drei kurze Optionen und die Möglichkeit, frei zu antworten. Der Skill wartet auf echte Antworten, passt die nächste Frage daran an und endet mit der Aufgabenstellung und offenen Punkten. Er recherchiert nicht und setzt die Aufgabe nicht um.
 
 Typische Aufrufe: „Interview“, „Mach eine interaktive Fragerunde“, „Frage nach, welche Informationen du noch benötigst“ oder „Nutze $interview für meine Aufgabe: …“.
 
@@ -29,7 +29,7 @@ Der Skill beginnt direkt mit der ersten Frage. Er nutzt bevorzugt anklickbare Fr
 ```text
 .agents/plugins/marketplace.json       # Codex-Katalog
 .claude-plugin/marketplace.json        # Claude-Code-Katalog
-plugins/hsc-marketplace/
+plugins/hsc-productivity/
   .codex-plugin/plugin.json            # Codex-Manifest
   .claude-plugin/plugin.json           # Claude-Code-Manifest
   skills/                             # Hier neue Skills ergänzen
@@ -44,7 +44,9 @@ plugins/hsc-design/
 
 ## Skills ergänzen
 
-Pro Skill einen eigenen Ordner anlegen: `plugins/hsc-marketplace/skills/<skill-name>/SKILL.md`.
+Skills nach Zweck im passenden Plugin ergänzen: `hsc-productivity` für Produktivität, `hsc-design` für Gestaltung. Weitere Themenbereiche können eigene Plugins und Katalogeinträge erhalten. Der gemeinsame Marketplace heißt weiterhin `hsc-marketplace`.
+
+Pro Skill einen eigenen Ordner anlegen: `plugins/<plugin-name>/skills/<skill-name>/SKILL.md`.
 
 Beispiel für den Aufbau einer `SKILL.md`:
 
@@ -75,22 +77,24 @@ Codex:
 
 ```sh
 codex plugin marketplace add the-fin-at/hsc-marketplace
-codex plugin add hsc-marketplace@hsc-marketplace
+codex plugin add hsc-productivity@hsc-marketplace
 ```
 
 Claude Code:
 
 ```text
 /plugin marketplace add the-fin-at/hsc-marketplace
-/plugin install hsc-marketplace@hsc-marketplace
+/plugin install hsc-productivity@hsc-marketplace
 ```
+
+Das bisherige Plugin `hsc-marketplace` heißt seit Version `0.4.0` `hsc-productivity`. Bereits installierte Exemplare werden durch die Umbenennung nicht automatisch ersetzt: das neue Plugin installieren und anschließend das alte Plugin im jeweiligen Client entfernen. Der Skill-Aufruf `$interview` bleibt gleich.
 
 ## Prüfung
 
 ```sh
 python3 scripts/validate.py
 claude plugin validate .
-claude plugin validate plugins/hsc-marketplace
+claude plugin validate plugins/hsc-productivity
 ```
 
 Die automatische Prüfung kontrolliert JSON-Dateien, übereinstimmende Namen und Versionen bei gemeinsamen Plugins, lokale Plugin-Pfade und vorhandene `SKILL.md`-Dateien. Reine Codex-Plugins benötigen keinen Claude-Katalogeintrag. Inhaltliche Tests der späteren Skills sind zusätzlich erforderlich.

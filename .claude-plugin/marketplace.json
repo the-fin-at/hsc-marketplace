@@ -9,8 +9,8 @@
   },
   "plugins": [
     {
-      "name": "hsc-marketplace",
-      "source": "./plugins/hsc-marketplace",
+      "name": "hsc-productivity",
+      "source": "./plugins/hsc-productivity",
       "description": "HSC-Skills für die interaktive Klärung von Aufgaben."
     }
   ]

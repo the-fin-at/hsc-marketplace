@@ -1,6 +1,6 @@
 {
-  "name": "hsc-marketplace",
-  "version": "0.3.0",
+  "name": "hsc-productivity",
+  "version": "0.4.0",
   "description": "HSC-Skills für die interaktive Klärung von Aufgaben.",
   "author": {
     "name": "THE FIN",
@@ -11,6 +11,7 @@
   "license": "UNLICENSED",
   "keywords": [
     "hsc",
+    "productivity",
     "skills"
   ],
   "skills": "./skills/"

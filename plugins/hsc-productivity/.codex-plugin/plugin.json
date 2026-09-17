@@ -1,6 +1,6 @@
 {
-  "name": "hsc-marketplace",
-  "version": "0.3.0",
+  "name": "hsc-productivity",
+  "version": "0.4.0",
   "description": "HSC-Skills für die interaktive Klärung von Aufgaben.",
   "author": {
     "name": "THE FIN",
@@ -11,12 +11,13 @@
   "license": "UNLICENSED",
   "keywords": [
     "hsc",
+    "productivity",
     "skills"
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "HSC Marketplace",
-    "shortDescription": "Plugin für HSC-Skills",
+    "displayName": "HSC Productivity",
+    "shortDescription": "Produktivitäts-Skills für HSC",
     "longDescription": "Klärt Aufgaben und Themen mit 5–10 einzeln gestellten, adaptiven Fragen, drei kurzen Antwortoptionen und freien Antworten. Fasst das geklärte Anliegen und offene Punkte zusammen.",
     "developerName": "THE FIN",
     "category": "Productivity",
