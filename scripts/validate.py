@@ -27,19 +27,24 @@ def main():
     claude_entries = {entry["name"]: entry for entry in claude["plugins"]}
     require(len(codex_entries) == len(codex["plugins"]), "Duplicate Codex plugin name")
     require(len(claude_entries) == len(claude["plugins"]), "Duplicate Claude plugin name")
-    require(codex_entries.keys() == claude_entries.keys(), "Catalog plugins differ")
+    require(claude_entries.keys() <= codex_entries.keys(), "Claude plugin missing from Codex catalog")
     skill_count = 0
     for name, entry in codex_entries.items():
         require(entry["source"]["source"] == "local", "Expected local plugin source")
         source = entry["source"]["path"]
-        require(source == claude_entries[name]["source"] == f"./plugins/{name}", "Plugin paths differ")
+        require(source == f"./plugins/{name}", "Unexpected plugin path")
         require(entry["policy"]["installation"] in {"AVAILABLE", "NOT_AVAILABLE", "INSTALLED_BY_DEFAULT"}, "Invalid installation policy")
         require(entry["policy"]["authentication"] in {"ON_INSTALL", "ON_USE"}, "Invalid authentication policy")
         require(bool(entry["category"]), "Missing category")
         plugin = ROOT / source
-        manifests = [read(f"{source}/{folder}/plugin.json") for folder in (".codex-plugin", ".claude-plugin")]
+        manifests = [read(f"{source}/.codex-plugin/plugin.json")]
+        if name in claude_entries:
+            require(source == claude_entries[name]["source"], "Plugin paths differ")
+            manifests.append(read(f"{source}/.claude-plugin/plugin.json"))
+        else:
+            require(not (plugin / ".claude-plugin/plugin.json").exists(), "Claude manifest missing from catalog")
         require(all(item["name"] == name for item in manifests), "Plugin names differ")
-        require(manifests[0]["version"] == manifests[1]["version"], "Plugin versions differ")
+        require(all(item["version"] == manifests[0]["version"] for item in manifests), "Plugin versions differ")
         require(re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", manifests[0]["version"]), "Expected x.y.z version")
         require(all(item["skills"] == "./skills/" for item in manifests), "Unexpected skills path")
         skills = plugin / "skills"

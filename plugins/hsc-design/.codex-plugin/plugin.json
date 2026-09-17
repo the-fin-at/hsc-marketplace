@@ -1,0 +1,29 @@
+{
+  "name": "hsc-design",
+  "version": "0.1.0",
+  "description": "Neusatz vorhandener Unterlagen im Corporate Design von HÖRHAN Strategy Consultants mit Codex.",
+  "author": {
+    "name": "THE FIN",
+    "url": "https://github.com/the-fin-at"
+  },
+  "homepage": "https://github.com/the-fin-at/hsc-marketplace",
+  "repository": "https://github.com/the-fin-at/hsc-marketplace",
+  "license": "UNLICENSED",
+  "keywords": [
+    "hsc",
+    "design",
+    "branding"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "HSC Design",
+    "shortDescription": "Unterlagen im HSC Corporate Design",
+    "longDescription": "Setzt vorhandene Unterlagen als Deck oder A4-Dokument im HSC Corporate Design neu. Benötigt einen bereitgestellten Export des HSC Design Systems mit Tokens, Bausteinen, Montserrat und Logo.",
+    "developerName": "THE FIN",
+    "category": "Design",
+    "defaultPrompt": [
+      "Setze meine Unterlage mit dem bereitgestellten HSC Design System neu."
+    ],
+    "capabilities": []
+  }
+}

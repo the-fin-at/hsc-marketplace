@@ -1,6 +1,20 @@
 # HSC Marketplace
 
-Grundgerüst für HSC-Skills, veröffentlicht von THE FIN. Enthält Kataloge für Codex und Claude Code sowie das Plugin `hsc-marketplace` in Version `0.3.0`.
+Marketplace für HSC-Skills von THE FIN. Enthält `hsc-marketplace` in Version `0.3.0` für Codex und Claude Code sowie `hsc-design` in Version `0.1.0` für Codex.
+
+## Design-Plugin für Codex
+
+`hsc-design` enthält [hsc-design-branding](plugins/hsc-design/skills/hsc-design-branding/SKILL.md): Neusatz vorhandener Unterlagen als Deck oder A4-Dokument im Corporate Design von HÖRHAN Strategy Consultants. Der Skill wurde aus der bereitgestellten Claude-Fassung für Codex angepasst. Er verwendet verfügbare Datei-, Dokument- und Rendering-Werkzeuge statt des Claude-Artifact-Tools.
+
+**Voraussetzung:** ein lokaler Export des HSC Design Systems mit Brand Book, Schreibregeln, Tokens, Bausteinen, Montserrat-Schriften und Original-Logo. Diese Dateien sind im gelieferten `.skill`-Archiv nicht enthalten und werden nicht mit diesem Plugin ausgeliefert. Ohne die benötigten Dateien kann Codex die Inhaltsinventur erstellen, aber keinen vollständigen HSC-Neusatz ausführen.
+
+Nach Veröffentlichung bzw. Aktualisierung des Marketplace:
+
+```sh
+codex plugin add hsc-design@hsc-marketplace
+```
+
+Beispiel: „Nutze $hsc-design-branding für diese Unterlage. Das HSC Design System liegt in diesem Ordner: …“
 
 ## Enthaltener Skill
 
@@ -21,6 +35,11 @@ plugins/hsc-marketplace/
   skills/                             # Hier neue Skills ergänzen
 scripts/validate.py                    # Prüfung von Katalogen und Pfaden
 .github/workflows/validate.yml         # Prüfung bei Push und Pull Request
+plugins/hsc-design/
+  .codex-plugin/plugin.json            # Eigenständiges Codex-Design-Plugin
+  skills/hsc-design-branding/
+    SKILL.md
+    agents/openai.yaml
 ```
 
 ## Skills ergänzen
@@ -45,7 +64,7 @@ Optionale Dateien liegen innerhalb des jeweiligen Skill-Ordners in `references/`
 Vor einer Veröffentlichung:
 
 1. `python3 scripts/validate.py` ausführen.
-2. Beide Plugin-Manifeste auf dieselbe neue Version setzen.
+2. Die Version des geänderten Plugins erhöhen; bei Plugins für beide Clients beide Manifeste auf dieselbe Version setzen.
 3. Änderungen committen und nach GitHub pushen.
 
 Das Repository ist derzeit öffentlich. Eine Open-Source-Lizenz wurde noch nicht vergeben (`UNLICENSED`).
@@ -74,4 +93,4 @@ claude plugin validate .
 claude plugin validate plugins/hsc-marketplace
 ```
 
-Die automatische Prüfung kontrolliert JSON-Dateien, übereinstimmende Namen und Versionen, lokale Plugin-Pfade und vorhandene `SKILL.md`-Dateien. Inhaltliche Tests der späteren Skills sind zusätzlich erforderlich.
+Die automatische Prüfung kontrolliert JSON-Dateien, übereinstimmende Namen und Versionen bei gemeinsamen Plugins, lokale Plugin-Pfade und vorhandene `SKILL.md`-Dateien. Reine Codex-Plugins benötigen keinen Claude-Katalogeintrag. Inhaltliche Tests der späteren Skills sind zusätzlich erforderlich.
