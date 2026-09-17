@@ -1,14 +1,14 @@
 # HSC Marketplace
 
-Grundgerüst für HSC-Skills, veröffentlicht von THE FIN. Enthält Kataloge für Codex und Claude Code sowie das Plugin `hsc-marketplace` in Version `0.2.0`.
+Grundgerüst für HSC-Skills, veröffentlicht von THE FIN. Enthält Kataloge für Codex und Claude Code sowie das Plugin `hsc-marketplace` in Version `0.3.0`.
 
 ## Enthaltener Skill
 
-[interview](plugins/hsc-marketplace/skills/interview/SKILL.md) klärt eine Aufgabe mit mindestens 5 und höchstens 10 einzeln gestellten Fragekarten. Jede Karte bietet drei kurze Optionen und die native Freitexteingabe. Der Skill wartet auf echte Antworten, passt die nächste Frage daran an und endet mit der Aufgabenstellung und offenen Punkten. Er recherchiert nicht und setzt die Aufgabe nicht um.
+[interview](plugins/hsc-marketplace/skills/interview/SKILL.md) klärt eine Aufgabe oder ein Thema mit mindestens 5 und höchstens 10 einzeln gestellten Fragen. Eine ausdrücklich gewünschte Anzahl innerhalb dieses Bereichs wird eingehalten. Jede Frage bietet drei kurze Optionen und die Möglichkeit, frei zu antworten. Der Skill wartet auf echte Antworten, passt die nächste Frage daran an und endet mit der Aufgabenstellung und offenen Punkten. Er recherchiert nicht und setzt die Aufgabe nicht um.
 
 Typische Aufrufe: „Interview“, „Mach eine interaktive Fragerunde“, „Frage nach, welche Informationen du noch benötigst“ oder „Nutze $interview für meine Aufgabe: …“.
 
-Der Skill setzt `request_user_input` oder ersatzweise `request_user_input_async` in der jeweiligen App-Sitzung voraus. Ohne nutzbares Fragewerkzeug meldet er die Einschränkung und stoppt. Die Paketformate für Codex und Claude Code allein garantieren keine verfügbaren Fragekarten; eine Live-Prüfung in der Ziel-App steht noch aus.
+Der Skill beginnt direkt mit der ersten Frage. Er nutzt bevorzugt anklickbare Fragekarten und stellt die Fragen andernfalls einzeln im Gespräch. Nach jeder Frage wartet er auf die tatsächliche Antwort.
 
 ## Struktur
 
