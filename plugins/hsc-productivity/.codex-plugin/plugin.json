@@ -1,6 +1,6 @@
 {
   "name": "hsc-productivity",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "HSC-Skills für die interaktive Klärung von Aufgaben.",
   "author": {
     "name": "THE FIN",
@@ -26,6 +26,9 @@
     ],
     "defaultPrompt": [
       "Mach eine interaktive Fragerunde zu meiner Aufgabe."
-    ]
+    ],
+    "logo": "./assets/icon.png",
+    "composerIcon": "./assets/icon.png",
+    "brandColor": "#34AB52"
   }
 }
