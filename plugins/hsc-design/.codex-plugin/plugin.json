@@ -1,6 +1,6 @@
 {
   "name": "hsc-design",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Vorhandene Unterlagen mit dem mitgelieferten HSC Design System gestalten – für ChatGPT und Codex.",
   "author": {
     "name": "THE FIN",
@@ -18,7 +18,7 @@
   "interface": {
     "displayName": "HSC Design",
     "shortDescription": "Unterlagen im HSC Corporate Design",
-    "longDescription": "Enthält HSC-Designregeln, Schreibregeln, HTML-Vorlagen, CSS, Original-Logo und sechs Montserrat-Schnitte. Setzt vorhandene Unterlagen als Deck oder A4-Dokument neu, ohne externen Design-System-Download. Enthält den originalen HSC-Styleguide als Primärquelle und den Skill HSC Design.",
+    "longDescription": "Enthält HSC-Designregeln, Schreibregeln, HTML-Vorlagen, CSS, Original-Logo und sechs Montserrat-Schnitte. Setzt vorhandene Unterlagen als Deck oder A4-Dokument neu, ohne externen Design-System-Download. Enthält den originalen HSC-Styleguide als Primärquelle und den Skill HSC Design. Mit editierbarer Word-Vorlage, eingebetteten Fonts und automatischen Seitenzahlen.",
     "developerName": "THE FIN",
     "category": "Design",
     "defaultPrompt": [

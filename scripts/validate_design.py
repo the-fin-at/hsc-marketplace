@@ -16,6 +16,21 @@ def validate(skill):
     with zipfile.ZipFile(source) as archive:
         assert archive.testzip() is None
         assert 'word/document.xml' in archive.namelist()
+    import xml.etree.ElementTree as ET
+    template = skill / 'assets/word/HSC-Word-Vorlage.docx'
+    ns = {'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
+    with zipfile.ZipFile(template) as archive:
+        assert archive.testzip() is None
+        assert not any('comments' in name for name in archive.namelist())
+        fonts = [name for name in archive.namelist() if name.startswith('word/fonts/')]
+        assert len(fonts) == 4, 'Missing embedded fonts'
+        footer = ET.fromstring(archive.read('word/footer1.xml'))
+        fields = {field.get('{'+ns['w']+'}instr').strip() for field in footer.findall('.//w:fldSimple', ns)}
+        assert {'PAGE', 'NUMPAGES'} <= fields
+        body = ET.fromstring(archive.read('word/document.xml'))
+        assert body.find('.//w:tbl', ns) is not None
+        for name in ('word/document.xml', 'word/footer1.xml'):
+            assert 'IBAN' not in archive.read(name).decode()
     system = skill / 'assets/design-system'
     assert len(list((system / 'assets').glob('Montserrat-*.ttf'))) == 6
     for name in ('hsc-logo.png', 'OFL-Montserrat.txt'):

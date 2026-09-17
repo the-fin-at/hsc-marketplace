@@ -33,7 +33,8 @@ Zielformat aus Auftrag und Quelle ableiten: Deck 16:9 mit 1280 × 720 px Referen
 | Kapitelbeginn | [Kapiteltrenner](assets/design-system/templates/slide-trenner.html), ohne Logo auf Blau |
 | Gleichrangige Punkte, Kernaussage | [Inhaltsfolie](assets/design-system/templates/slide-inhalt.html), Boxen / Merksatz |
 | Abfolge, Schritte | [Prozessfolie](assets/design-system/templates/slide-prozess.html) |
-| Handout, Bericht, Dokument | [A4-Vorlage](assets/design-system/templates/document-a4.html) |
+| Word-Bericht / Word-Handout | [Native Word-Vorlage](assets/word/HSC-Word-Vorlage.docx), [Verwendung](references/word-vorlage.md) |
+| HTML-Handout, HTML-Dokument | [A4-Vorlage](assets/design-system/templates/document-a4.html) |
 | Liste, Spalten, Hinweis | `.hsc-list`, `.hsc-cols`, `.hsc-box--tint` aus `components.css` |
 | Tabelle, Diagramm | Regeln der Referenz; Diagrammfarben Dunkel-/Hellblau, Tabellenlinien `--hsc-line` |
 
@@ -43,7 +44,7 @@ Ordne jede Inventurposition einem Blatt und Layout zu. Pro Folie ein Gedanke und
 
 Arbeite in einer Kopie, nicht im installierten Plugin. Für HTML das Design-System in den Ausgabeordner kopieren und die Struktur `templates/`, `assets/`, `tokens.css`, `components.css` erhalten. So bleiben relative Links und Fonts portabel. Alle `[[TEXT_N]]` mit tatsächlichen Inhalten ersetzen oder optionale Elemente entfernen. Titel, Datum, Seitenzahlen und Fußzeilen passend einsetzen; keine Demonstrationsinhalte übernehmen. Für eine einzelne HTML-Datei Ressourcen korrekt einbetten, andernfalls die vollständige Ausgabe als ZIP mitliefern.
 
-Für native PPTX/DOCX dieselben Maße, Farben und Schriftrollen umsetzen, Texte und Formen editierbar halten. Die HTML-Vorlagen als Gestaltungsreferenz verwenden; keine ganzen Seiten als Screenshot-Ersatz einbetten. Das Paket enthält keine nativen Office-Masterdateien. Native Exporte mit den verfügbaren Werkzeugen erstellen und anschließend gesondert prüfen. Montserrat muss im Rendering geladen sein; fehlende Schrifteinbettung bzw. nötige Fontinstallation für spätere Office-Bearbeitung bei der Übergabe nennen.
+Für DOCX zuerst [Word-Vorlagenhinweise](references/word-vorlage.md) lesen und die mitgelieferte DOCX kopieren und befüllen. Formatvorlagen, Kopf-/Fußzeilen, Seitenfelder und eingebettete Fonts erhalten. Für PPTX dieselben Maße, Farben und Schriftrollen umsetzen, Texte und Formen editierbar halten. Die HTML-Vorlagen als Gestaltungsreferenz verwenden; keine ganzen Seiten als Screenshot-Ersatz einbetten. Eine native Word-Vorlage ist enthalten; eine native PowerPoint-Masterdatei nicht. Native Exporte mit den verfügbaren Werkzeugen erstellen und anschließend gesondert prüfen. Montserrat muss im Rendering geladen sein; fehlende Schrifteinbettung bzw. nötige Fontinstallation für spätere Office-Bearbeitung bei der Übergabe nennen.
 
 Für mehrseitige A4-Dokumente Seitenumbrüche, Kopf-/Fußzeilen und freien Textbereich kontrollieren. Die Einseitenvorlage und deren Druck-CSS garantieren keine automatische Paginierung. Die Vorschau-Skalierung aus `index.html` nicht in Dokumente übernehmen.
 

@@ -1,6 +1,6 @@
 # HSC Marketplace
 
-Marketplace für HSC-Skills von THE FIN. Enthält `hsc-productivity` in Version `0.4.0` für Codex und Claude Code sowie `hsc-design` in Version `0.3.0` für Codex.
+Marketplace für HSC-Skills von THE FIN. Enthält `hsc-productivity` in Version `0.4.0` für Codex und Claude Code sowie `hsc-design` in Version `0.4.0` für Codex.
 
 ## Design-Plugin für Codex
 
@@ -8,7 +8,7 @@ Marketplace für HSC-Skills von THE FIN. Enthält `hsc-productivity` in Version 
 
 **Design-System enthalten:** alle 19 Originaldateien aus `HSC_DesignSystem.zip` (Stand 17.09.2026), darunter Tokens, CSS-Bausteine, Logo, sechs Montserrat-Schnitte samt Lizenz, HTML-Dokumentation und vier Beispielfolien mit PNG-Vorschauen. Ergänzt sind lesbare Regelreferenzen und fünf HTML-Vorlagen mit Platzhaltern, einschließlich A4. Zusätzlich enthalten: der originale HSC-Styleguide vom 18.02.2026 als unveränderte DOCX und lesbarer Textauszug; er hat bei Regelkonflikten Vorrang vor abgeleiteten Referenzen. Der Skill heißt **HSC Design** (technisch `hsc-design`, zuvor `hsc-design-branding`). Kein Claude-Artifact-Zugriff und kein zusätzlicher Design-Export nötig.
 
-Der Nutzer stellt seine Ausgangsunterlage bereit. Die verwendete Oberfläche muss Dateierzeugung und für die Sichtprüfung Rendering unterstützen. Native Office-Masterdateien sind nicht enthalten; PPTX/DOCX werden aus den Designvorgaben erzeugt und gesondert geprüft. Die Installation und der vollständige Ablauf auf der ChatGPT-Testinstanz müssen noch dort getestet werden.
+Der Nutzer stellt seine Ausgangsunterlage bereit. Die verwendete Oberfläche muss Dateierzeugung und für die Sichtprüfung Rendering unterstützen. Eine native Word-Vorlage mit Logo, Formatvorlagen, Tabelle, eingebettetem Montserrat und automatischen Seitenzahlen ist enthalten. DOCX wird daraus erstellt; PPTX weiterhin aus den Designvorgaben. Beide Zielformate werden gesondert geprüft. Die Installation und der vollständige Ablauf auf der ChatGPT-Testinstanz müssen noch dort getestet werden.
 
 Nach Veröffentlichung bzw. Aktualisierung des Marketplace:
 
