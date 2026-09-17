@@ -1,12 +1,12 @@
 # HSC Marketplace
 
-Marketplace für HSC-Skills von THE FIN. Enthält `hsc-productivity` in Version `0.4.0` für Codex und Claude Code sowie `hsc-design` in Version `0.2.0` für Codex.
+Marketplace für HSC-Skills von THE FIN. Enthält `hsc-productivity` in Version `0.4.0` für Codex und Claude Code sowie `hsc-design` in Version `0.3.0` für Codex.
 
 ## Design-Plugin für Codex
 
-`hsc-design` enthält [hsc-design-branding](plugins/hsc-design/skills/hsc-design-branding/SKILL.md) für ChatGPT und Codex: Neusatz vorhandener Unterlagen als Deck oder A4-Dokument im Corporate Design von HÖRHAN Strategy Consultants.
+`hsc-design` enthält [hsc-design](plugins/hsc-design/skills/hsc-design/SKILL.md) für ChatGPT und Codex: Neusatz vorhandener Unterlagen als Deck oder A4-Dokument im Corporate Design von HÖRHAN Strategy Consultants.
 
-**Design-System enthalten:** alle 19 Originaldateien aus `HSC_DesignSystem.zip` (Stand 17.09.2026), darunter Tokens, CSS-Bausteine, Logo, sechs Montserrat-Schnitte samt Lizenz, HTML-Dokumentation und vier Beispielfolien mit PNG-Vorschauen. Ergänzt sind lesbare Regelreferenzen und fünf HTML-Vorlagen mit Platzhaltern, einschließlich A4. Kein Claude-Artifact-Zugriff und kein zusätzlicher Design-Export nötig.
+**Design-System enthalten:** alle 19 Originaldateien aus `HSC_DesignSystem.zip` (Stand 17.09.2026), darunter Tokens, CSS-Bausteine, Logo, sechs Montserrat-Schnitte samt Lizenz, HTML-Dokumentation und vier Beispielfolien mit PNG-Vorschauen. Ergänzt sind lesbare Regelreferenzen und fünf HTML-Vorlagen mit Platzhaltern, einschließlich A4. Zusätzlich enthalten: der originale HSC-Styleguide vom 18.02.2026 als unveränderte DOCX und lesbarer Textauszug; er hat bei Regelkonflikten Vorrang vor abgeleiteten Referenzen. Der Skill heißt **HSC Design** (technisch `hsc-design`, zuvor `hsc-design-branding`). Kein Claude-Artifact-Zugriff und kein zusätzlicher Design-Export nötig.
 
 Der Nutzer stellt seine Ausgangsunterlage bereit. Die verwendete Oberfläche muss Dateierzeugung und für die Sichtprüfung Rendering unterstützen. Native Office-Masterdateien sind nicht enthalten; PPTX/DOCX werden aus den Designvorgaben erzeugt und gesondert geprüft. Die Installation und der vollständige Ablauf auf der ChatGPT-Testinstanz müssen noch dort getestet werden.
 
@@ -16,7 +16,7 @@ Nach Veröffentlichung bzw. Aktualisierung des Marketplace:
 codex plugin add hsc-design@hsc-marketplace
 ```
 
-Beispiel: „Nutze $hsc-design-branding für diese Unterlage. Verwende die mitgelieferten Vorlagen und liefere ein A4-Dokument.“
+Beispiel: „Nutze $hsc-design für diese Unterlage. Verwende die mitgelieferten Vorlagen und liefere ein A4-Dokument.“
 
 ## Productivity-Plugin
 
@@ -39,7 +39,7 @@ scripts/validate.py                    # Prüfung von Katalogen und Pfaden
 .github/workflows/validate.yml         # Prüfung bei Push und Pull Request
 plugins/hsc-design/
   .codex-plugin/plugin.json            # Eigenständiges Codex-Design-Plugin
-  skills/hsc-design-branding/
+  skills/hsc-design/
     SKILL.md
     agents/openai.yaml
 ```

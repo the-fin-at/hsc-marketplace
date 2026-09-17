@@ -1,5 +1,7 @@
 # HSC Schreibregeln
 
+Abgeleitete Referenz. Bei Widersprüchen gilt der [originale HSC-Styleguide](original-styleguide.md). Die Quellenkennzeichnungen unten bleiben erhalten.
+
 Aus `assets/design-system/index.html`, Stand 17.09.2026. Kennzeichnungen HSC, HSC-Doku, abgeleitet und Vorschlag bleiben maßgeblich. Demonstrationsinhalte sind keine Fakten für Kundenunterlagen.
 
 09 · Schreibregeln HSC 

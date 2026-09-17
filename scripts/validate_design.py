@@ -7,10 +7,15 @@ from pathlib import Path
 from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'plugins/hsc-design/skills/hsc-design-branding'
+SOURCE = ROOT / 'plugins/hsc-design/skills/hsc-design'
 
 
 def validate(skill):
+    import zipfile
+    source = skill / 'references/original/260218_STYLEGUIDE_MIKROTYPOGRAPHIE_HSC.docx'
+    with zipfile.ZipFile(source) as archive:
+        assert archive.testzip() is None
+        assert 'word/document.xml' in archive.namelist()
     system = skill / 'assets/design-system'
     assert len(list((system / 'assets').glob('Montserrat-*.ttf'))) == 6
     for name in ('hsc-logo.png', 'OFL-Montserrat.txt'):

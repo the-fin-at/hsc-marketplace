@@ -26,3 +26,7 @@ Die Originale in `slides/`, die PNGs und das Dokument in `index.html` illustrier
 - Das A4-HTML ist eine Einseitenvorlage. Mehrseitige Inhalte brauchen kontrollierte Seitenumbrüche und wiederholte Kopf-/Fußzeilen. Das mitgelieferte Druck-CSS ist keine Garantie für korrekte Paginierung; insbesondere Fußzeile und Textbereich im exportierten PDF prüfen.
 - CSS nutzt feste Positionen und teils `overflow:hidden`. Lange Inhalte auf zusätzliche Seiten verteilen; nicht stillschweigend abschneiden oder die Schrift verkleinern.
 - Dokument-H3: Textbeschreibung nennt +1 pt Laufweite, CSS verwendet .05em. Für native Dokumente den dokumentierten +1-pt-Wert verwenden; bei HTML die Abweichung nennen, solange das Original-CSS unverändert bleibt.
+
+## Ergänzte Primärquelle
+
+Der [Original-Styleguide](original-styleguide.md) und die unveränderte DOCX sind zusätzlich zum ZIP enthalten. Die Originaldatei enthält auch ihre ursprünglichen Kopf-/Fußzeilen und Kommentare. Sie ist eine Referenz, keine bereinigte Ausgabevorlage; insbesondere nicht als Kundenunterlage kopieren.
