@@ -1,4 +1,4 @@
 interface:
   display_name: "HSC Design"
   short_description: "Unterlagen mit mitgelieferten HSC-Vorlagen gestalten"
-  default_prompt: "Nutze $hsc-design, um meine Unterlage mit den mitgelieferten HSC-Vorlagen neu zu setzen."
+  default_prompt: "Gestalte meine Unterlage im HSC-Design mit den mitgelieferten Vorlagen."

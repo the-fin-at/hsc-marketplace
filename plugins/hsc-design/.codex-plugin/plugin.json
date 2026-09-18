@@ -1,6 +1,6 @@
 {
   "name": "hsc-design",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Vorhandene Unterlagen mit dem mitgelieferten HSC Design System gestalten – für ChatGPT und Codex.",
   "author": {
     "name": "THE FIN",
@@ -22,7 +22,7 @@
     "developerName": "THE FIN",
     "category": "Design",
     "defaultPrompt": [
-      "Setze meine Unterlage im HSC-Design mit den mitgelieferten Vorlagen neu."
+      "Gestalte meine Unterlage im HSC-Design mit den mitgelieferten Vorlagen."
     ],
     "capabilities": [],
     "logo": "./assets/icon.png",

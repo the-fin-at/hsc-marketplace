@@ -1,6 +1,6 @@
 # HSC Marketplace
 
-Marketplace für HSC-Skills von THE FIN. Enthält `hsc-productivity` in Version `0.5.0` für Codex und Claude Code sowie `hsc-design` in Version `0.5.0` für Codex.
+Marketplace für HSC-Skills von THE FIN. Enthält `hsc-productivity` in Version `0.5.0` für Codex und Claude Code sowie `hsc-design` in Version `0.5.1` für Codex.
 
 ## Design-Plugin für Codex
 
